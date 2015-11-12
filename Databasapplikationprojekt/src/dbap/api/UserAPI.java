@@ -1,8 +1,9 @@
-package dbap.api.base;
+package dbap.api;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.Path;
 
+import dbap.api.base.BaseAPI;
 import dbap.dao.UserDAO;
 import dbap.dao.dto.User;
 

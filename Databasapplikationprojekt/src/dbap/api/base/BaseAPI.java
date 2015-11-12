@@ -3,8 +3,6 @@ package dbap.api.base;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,7 +11,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -28,10 +25,7 @@ import com.google.gson.Gson;
 @Produces (MediaType.APPLICATION_JSON)
 public class BaseAPI <T extends BaseDTO>{
 	
-	protected BaseDAO<T> dao;
-	
-	@Context protected HttpServletRequest request;
-    
+	protected BaseDAO<T> dao;  
 	
 	@PostConstruct
 	public void init() {
@@ -88,12 +82,7 @@ public class BaseAPI <T extends BaseDTO>{
     	return Response.status(Status.ACCEPTED).build();
     	
     }
-    
-    protected boolean isAdmin()
-    {
-    	HttpSession session = request.getSession(true);
-    	return (int) session.getAttribute("admin") == 1;
-    }
+
     
     
 }
