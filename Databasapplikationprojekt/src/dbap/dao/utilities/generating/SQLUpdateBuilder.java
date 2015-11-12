@@ -35,8 +35,6 @@ public class SQLUpdateBuilder<T extends BaseDTO> {
 				String fieldName = field.getName();
 				String fieldType = field.getType().getName();
 				
-				System.out.println("fieldName: " + fieldName);
-				System.out.println("fieldType: " + fieldType);
 				if(fieldType == "java.lang.String")
 				{
 					params[i] = field.get(model);
