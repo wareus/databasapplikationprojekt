@@ -16,7 +16,7 @@ public class StartUp extends HttpServlet
 		String adress = "localhost";
 		String userName = "root";
 		String password = "";
-		String database = "test";
+		String database = "arnprojectplanner";
 		int port = 3306;
 		DataBaseDriver.setConfig(new DataBaseConfig(adress, userName, password, database, port));
 	}

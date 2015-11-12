@@ -1,14 +1,10 @@
 package dbap.dao.utilities.mapping;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.HashMap;
-
-import dbap.dao.dto.base.BaseDTO;
 
 public class ObjectMapper<T> implements RowMapper<T>
 {
@@ -32,12 +28,15 @@ public class ObjectMapper<T> implements RowMapper<T>
 		{
 			e2.printStackTrace();
 		}
+		
 		try
 		{
-			Constructor<?> constructor = type.getConstructor();
-			constructor.setAccessible(true);
-			model = (T) constructor.newInstance();
-		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e1)
+			@SuppressWarnings("unchecked")
+			Class<T> c = (Class<T>) Class.forName(type.getName());
+			
+			model = c.newInstance();
+			
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e1)
 		{
 			e1.printStackTrace();
 		}
@@ -45,7 +44,6 @@ public class ObjectMapper<T> implements RowMapper<T>
 		
 		HashMap<String, Field> fields = new HashMap<String, Field>();
 		fields = getAllFields(fields, type);
-		
 		try {
 		for (int i = 0; i < metaData.getColumnCount(); i++) {
 			
@@ -54,8 +52,7 @@ public class ObjectMapper<T> implements RowMapper<T>
 				if(field != null)
 				{
 					String fieldType = field.getType().getName();
-					
-					String colName = type.getSimpleName() + field.getName();
+					String colName = field.getName();
 					
 					if(fieldType == "java.lang.String")
 					{
@@ -64,10 +61,6 @@ public class ObjectMapper<T> implements RowMapper<T>
 					else if(fieldType == "int")
 					{
 						field.setInt(model, resultSet.getInt(colName));
-					}
-					else if(fieldType == "boolean")
-					{
-						field.setBoolean(model, resultSet.getBoolean(colName));
 					}
 					
 				}

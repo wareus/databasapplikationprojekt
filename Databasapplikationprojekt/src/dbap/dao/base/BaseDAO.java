@@ -10,6 +10,7 @@ import dbap.dao.utilities.connection.DataBaseDriver;
 import dbap.dao.utilities.connection.DataBaseHandler;
 import dbap.dao.utilities.generating.SQLUpdate;
 import dbap.dao.utilities.generating.SQLUpdateBuilder;
+import dbap.dao.utilities.mapping.ObjectMapper;
 import dbap.dao.utilities.mapping.RowMapper;
 
 
@@ -28,6 +29,7 @@ public class BaseDAO <T extends BaseDTO>{
 		tabelName = getType().getSimpleName();
 
 		this.db = new DataBaseHandler();
+		mapper = new ObjectMapper<T>(type);
 		
 	}
 
@@ -35,7 +37,7 @@ public class BaseDAO <T extends BaseDTO>{
 
 	public ArrayList<T> getAll()
 	{
-		String sql ="SELECT * FROM" + tabelName;
+		String sql ="SELECT * FROM " + tabelName;
 		
 		return (ArrayList<T>)db.query(sql, mapper) ;
 		
@@ -45,7 +47,7 @@ public class BaseDAO <T extends BaseDTO>{
 		
 		Object [] params = {id};
 		
-		String sql ="SELECT * FROM" + tabelName + " WHERE id=?";
+		String sql ="SELECT * FROM " + tabelName + " WHERE id=?";
 		
 		return returnSingelValue(sql, params);
 	}
