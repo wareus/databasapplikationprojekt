@@ -6,6 +6,6 @@ public class CustomResourceConfig extends ResourceConfig {
     public CustomResourceConfig() {
     	
         packages("dbap.custom.annotation");
-        register(SecureFilter.class);
+        register(LoginFilter.class);
     }
 }

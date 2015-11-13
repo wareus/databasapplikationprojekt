@@ -78,5 +78,14 @@ public class BaseDAO <T extends BaseDTO>{
 			return models.get(0);
 		return null;
 	}
+
+
+
+	public String getTabelName()
+	{
+		return tabelName;
+	}
+	
+	
 }
 

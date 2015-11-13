@@ -15,7 +15,7 @@ public class UserAPI extends BaseAPI<User>
 	@PostConstruct
 	public void init() {
 		
-		dao = new UserDAO(User.class);
+		dao = new UserDAO();
 	}
 
 	@Override
