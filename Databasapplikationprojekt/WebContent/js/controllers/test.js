@@ -42,7 +42,7 @@ angular.module('test', ['dto','login'])
 				name:"test",
 				password:"test"
 		};
-		Login.save($scope.login).$promise.catch(function(response) {
+		Login.save(login).$promise.catch(function(response) {
 		    if(response.status == 401) alert("please retry to login agin", "Login failed");
 		});
 	}

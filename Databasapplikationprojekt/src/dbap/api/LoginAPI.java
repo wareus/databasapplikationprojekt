@@ -32,7 +32,9 @@ public class LoginAPI
 
 		System.out.println(json);
 		User user = new Gson().fromJson(json, User.class);
-
+		
+		if(user == null) return Response.status(Response.Status.BAD_REQUEST).build();
+		
 		User dbUser = new UserDAO().getByName(user.name);
 
 		if (dbUser != null && dbUser.password.equals(user.password))
