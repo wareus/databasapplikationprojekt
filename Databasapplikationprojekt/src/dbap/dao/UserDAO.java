@@ -5,9 +5,19 @@ import dbap.dao.dto.User;
 
 public class UserDAO extends BaseDAO<User>
 {
-	public UserDAO(Class<User> type)
+	public UserDAO()
 	{
-		super(type);
+		super(User.class);
+	}
+	
+	public User getByName(String name)
+	{
+		Object [] params = {name};
+		
+		
+		String sql ="SELECT * FROM " + getTabelName() + " WHERE name=?";
+		
+		return returnSingelValue(sql, params);
 	}
 
 }
