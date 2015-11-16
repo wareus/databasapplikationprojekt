@@ -1,9 +1,11 @@
 package dbap.dao.utilities.mapping;
 
 import java.lang.reflect.Field;
+import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ObjectMapper<T> implements RowMapper<T>
@@ -44,6 +46,7 @@ public class ObjectMapper<T> implements RowMapper<T>
 		
 		HashMap<String, Field> fields = new HashMap<String, Field>();
 		fields = getAllFields(fields, type);
+	
 		try {
 		for (int i = 0; i < metaData.getColumnCount(); i++) {
 			
@@ -62,7 +65,13 @@ public class ObjectMapper<T> implements RowMapper<T>
 					{
 						field.setInt(model, resultSet.getInt(colName));
 					}
+					else if(fieldType =="Date")
+					{
+						Date sqlDate = null;
+						java.util.Date date = new java.util.Date(sqlDate.getTime());
+				        System.out.println("Converted value of java.util.Date : " + date);
 					
+					}
 				}
 				
 			

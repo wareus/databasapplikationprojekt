@@ -1,4 +1,5 @@
 package dbap.dao.utilities.mapping;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -21,6 +22,7 @@ public class ObjectMapperTest
 		resultSet = mock(ResultSet.class);
 		when(resultSet.getInt("id")).thenReturn(1);
 		when(resultSet.getString("testString")).thenReturn("test");
+		//when(resultSet.getDate("Date")).thenReturn(Date);
 		
 		ResultSetMetaData metaData = mock(ResultSetMetaData.class);
 		
