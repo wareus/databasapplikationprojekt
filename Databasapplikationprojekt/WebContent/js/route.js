@@ -1,4 +1,4 @@
-angular.module("ArnProjectPlanner", ["ngRoute", "test"]).config(function($routeProvider) {
+angular.module("ArnProjectPlanner", ["ngRoute", "test", "loginDirective"]).config(function($routeProvider) {
     $routeProvider
 	    .when("/", {
 	    	templateUrl : "html/views/test.html",
