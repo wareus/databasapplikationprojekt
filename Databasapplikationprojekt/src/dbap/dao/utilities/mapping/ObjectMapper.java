@@ -46,16 +46,18 @@ public class ObjectMapper<T> implements RowMapper<T>
 		
 		HashMap<String, Field> fields = new HashMap<String, Field>();
 		fields = getAllFields(fields, type);
-	
+//		System.out.println(fields);
+		
 		try {
 		for (int i = 0; i < metaData.getColumnCount(); i++) {
-			
-				Field field = fields.get(metaData.getColumnName(i + 1));
 				
+				Field field = fields.get(metaData.getColumnName(i + 1));
+				System.out.println(field);
 				if(field != null)
 				{
 					String fieldType = field.getType().getName();
 					String colName = field.getName();
+//					System.out.println(fieldType);
 					
 					if(fieldType == "java.lang.String")
 					{
@@ -64,13 +66,6 @@ public class ObjectMapper<T> implements RowMapper<T>
 					else if(fieldType == "int")
 					{
 						field.setInt(model, resultSet.getInt(colName));
-					}
-					else if(fieldType =="Date")
-					{
-						Date sqlDate = null;
-						java.util.Date date = new java.util.Date(sqlDate.getTime());
-				        System.out.println("Converted value of java.util.Date : " + date);
-					
 					}
 				}
 				
