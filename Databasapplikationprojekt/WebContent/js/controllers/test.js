@@ -36,16 +36,6 @@ angular.module('test', ['dto','login'])
 		console.log("remove");
 		new User({id:1}).$remove();
 	}
-	$scope.login = function()
-	{
-		var login = {
-				name:"test",
-				password:"test"
-		};
-		Login.save(login).$promise.catch(function(response) {
-		    if(response.status == 401) alert("please retry to login agin", "Login failed");
-		});
-	}
 	
 	
 })

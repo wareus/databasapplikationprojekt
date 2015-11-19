@@ -1,9 +1,9 @@
 package dbap.dao.utilities.mapping;
 
 import java.lang.reflect.Field;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ObjectMapper<T> implements RowMapper<T>
@@ -44,9 +44,10 @@ public class ObjectMapper<T> implements RowMapper<T>
 		
 		HashMap<String, Field> fields = new HashMap<String, Field>();
 		fields = getAllFields(fields, type);
+		
 		try {
 		for (int i = 0; i < metaData.getColumnCount(); i++) {
-			
+				
 				Field field = fields.get(metaData.getColumnName(i + 1));
 				
 				if(field != null)
@@ -62,7 +63,11 @@ public class ObjectMapper<T> implements RowMapper<T>
 					{
 						field.setInt(model, resultSet.getInt(colName));
 					}
-					
+					else if(fieldType == "java.time.LocalDateTime")
+					{
+						
+						field.set(model, resultSet.getTimestamp(colName).toLocalDateTime());
+					}
 				}
 				
 			
