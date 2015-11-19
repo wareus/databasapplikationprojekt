@@ -1,7 +1,6 @@
 angular.module('calendarDirective', ['ui.calendar'])
 .directive('calendar', function() {
 	
-	console.log(21);
 	
 	
 	return {
@@ -29,7 +28,7 @@ angular.module('calendarDirective', ['ui.calendar'])
 						        eventResize: $scope.alertOnResize
 						      }
 						    };
-					console.log(12);
+					
 					
 					
 					
