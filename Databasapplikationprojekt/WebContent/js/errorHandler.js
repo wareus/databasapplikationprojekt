@@ -3,23 +3,13 @@ angular.module('errorHandler', []).config(["$httpProvider", function ($httpProvi
 	$httpProvider.interceptors.push(function($q) {
 
 			
-		console.log("^^");
-			var success = function(response) {
-	            return response;
-	        }
-	        var error = function(response) {
-	            var status = response.status;
-	            console.log("=)");
-	            if (status == 401) {
-	            	
-	            	console.log(401);
-	            	
-	                return;
-	            }
-	            return $q.reject(response);
-	        }
-	        return function (promise) {
-	            return promise.then(success, error);
+		console.log("hej");
+		return{
+			       'responseError': function(response) {
+			        console.log("rejection = ");
+			        console.log(response);
+			        return $q.reject(response);
+			      }
 
 		};
 	});
