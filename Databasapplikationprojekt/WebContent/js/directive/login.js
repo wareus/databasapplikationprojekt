@@ -1,7 +1,12 @@
 angular.module('loginDirective', [ 'login' ]).directive('login', function(Login) {
 
+
+	
+	
+
 	return {
 		restrict : 'E',
+
 		templateUrl : 'html/directive/login.html',
 
 		controller : [ '$scope', function($scope) {
