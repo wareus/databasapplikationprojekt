@@ -1,7 +1,7 @@
 angular.module('calendarDirective', ['ui.calendar'])
 .directive('calendar', function() {
 	
-	console.log(22);
+	console.log(21);
 	
 	
 	return {
@@ -9,17 +9,18 @@ angular.module('calendarDirective', ['ui.calendar'])
 		templateUrl : 'html/directive/calendar.html',
 		
 		controller : [ '$scope', function($scope) {
-				$scope.calendarCtrl = function()
-				{
-					
+				
+			
+					console.log(22);
 					
 					$scope.eventSources = [];
+					
 					$scope.uiConfig = {
 						      calendar:{
 						        height: 450,
 						        editable: true,
 						        header:{
-						          left: 'month basicWeek basicDay agendaWeek agendaDay',
+						          left: 'month basicWeek ',
 						          center: 'title',
 						          right: 'today prev,next'
 						        },
@@ -33,7 +34,7 @@ angular.module('calendarDirective', ['ui.calendar'])
 					
 					
 				}
-			} ]
+			]
 	}
 
 });
