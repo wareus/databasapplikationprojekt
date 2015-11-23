@@ -52,8 +52,8 @@ angular.module('calendarDirective', [ 'ui.calendar' ]).directive('calendar',func
 												$scope.eventSources = [{
 													events: [	{		
 												         title: 'Hejsan',												        
-												         start: '2015-11-16'
-												         
+												         start: '2015-11-16',
+												         end: '2015-11-22'
 													}]
 												}];
 												
