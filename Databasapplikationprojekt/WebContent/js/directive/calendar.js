@@ -58,7 +58,6 @@ angular.module('calendarDirective', [ 'ui.calendar' ]).directive('calendar',func
 												}];
 												
 											}
-											$('#calendar').fullCalendar('rerenderEvents');
 											console.log(eventData);
 											
 										},
