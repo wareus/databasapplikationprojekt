@@ -65,7 +65,7 @@ public class ObjectMapper<T> implements RowMapper<T>
 					}
 					else if(fieldType == "java.time.LocalDateTime")
 					{
-						
+						if ( resultSet.getTimestamp(colName)!=null)
 						field.set(model, resultSet.getTimestamp(colName).toLocalDateTime());
 					}
 				}
