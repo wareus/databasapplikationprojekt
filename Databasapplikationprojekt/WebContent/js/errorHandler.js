@@ -3,11 +3,11 @@ angular.module('errorHandler', []).config(["$httpProvider", function ($httpProvi
 	$httpProvider.interceptors.push(function($q) {
 
 			
-		console.log("hej");
 		return{
 			       'responseError': function(response) {
-			        console.log("rejection = ");
-			        console.log(response);
+			        if(response.status === 401)
+			        {
+			        }
 			        return $q.reject(response);
 			      }
 
