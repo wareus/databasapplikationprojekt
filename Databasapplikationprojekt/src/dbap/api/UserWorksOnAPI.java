@@ -8,7 +8,7 @@ import dbap.api.base.BaseAPI;
 
 import dbap.dao.dto.UserWorksOn ;
 
-@Path("UserWorksOn")
+@Path("userWorksOn")
 
 public class UserWorksOnAPI extends BaseAPI<UserWorksOn> {
 
