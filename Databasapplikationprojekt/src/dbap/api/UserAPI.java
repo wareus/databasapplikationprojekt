@@ -25,12 +25,6 @@ public class UserAPI extends BaseAPI<User>
 		return super.getAll();
 	}
 
-	@Override
-	public Response getByID(String id) {
-		// TODO Auto-generated method stub
-//		return super.getByID(id);
-		return Response.status(Response.Status.UNAUTHORIZED).build();
-	}
 	
 	
 	
