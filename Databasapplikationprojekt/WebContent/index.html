@@ -19,9 +19,11 @@
 <script src="js/services/api.js"></script>
 <script src="js/services/login.js"></script>
 <script src="js/controllers/test.js"></script>
+<script src="js/controllers/projectView.js"></script>
 <script src="js/directive/login.js"></script>
 <script src="js/directive/loginModal.js"></script>
 <script src="js/directive/calendar.js"></script>
+<script src="js/directive/projectList.js"></script>
 <script type="text/javascript" src='js/lib/jquery.min.js'></script>
 <script type="text/javascript" src='js/lib/moment.min.js'></script>
 <script type="text/javascript" src="js/lib/foundation.min.js"></script>
@@ -56,7 +58,11 @@
 			</section>
 		</nav>
 	</div>
-	<div ng-view></div>
+	<div class="row">
+		<div class="large-12 columns">
+			<div ng-view></div>
+		</div>
+	</div>
 
 	
 

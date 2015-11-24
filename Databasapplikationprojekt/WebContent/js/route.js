@@ -1,5 +1,5 @@
 
-angular.module("ArnProjectPlanner", ["ngRoute", "test", "errorHandler","calendarDirective", "loginDirective", "loginModalButtonDirective"]).config(function($routeProvider) {
+angular.module("ArnProjectPlanner", ["ngRoute", "test", "errorHandler","calendarDirective", "loginDirective", "loginModalButtonDirective","projectView", "projectListDirective"]).config(function($routeProvider) {
     $routeProvider
 	    .when("/", {
 	    	templateUrl : "html/views/Bashemsida.html",
@@ -11,6 +11,10 @@ angular.module("ArnProjectPlanner", ["ngRoute", "test", "errorHandler","calendar
 	    })
 	     .when("/calendar", {
 	    	templateUrl : "html/views/calendar.html",
+	    	controller  : "testController"
+	    })
+	    .when("/projectView", {
+	    	templateUrl : "html/views/projectView.html",
 	    	controller  : "testController"
 	    })
 });
