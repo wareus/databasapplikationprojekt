@@ -3,5 +3,18 @@
 	here can you se all your projects and create new ones
 </div>
 
-<project-list></project-list>
+<accordion close-others="oneAtATime">
+	<accordion-group is-open="isopen">
+	        <accordion-heading>
+	            I can have markup, too! <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+	        </accordion-heading>
+	        This is just some content to illustrate fancy headings.
+	</accordion-group>
+</accordion>
+
+<label>Project name
+        <input type="text" placeholder="name" />
+</label>
 <button class="expand" ng-click="create()">Create</button>
+
+<project-list></project-list>
