@@ -6,15 +6,13 @@
 <accordion close-others="oneAtATime">
 	<accordion-group is-open="isopen">
 	        <accordion-heading>
-	            I can have markup, too! <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+	            Create new Project <i class="right" ng-class="{'fi-arrow-down': isopen, 'fi-arrow-right': !isopen}"></i>
 	        </accordion-heading>
-	        This is just some content to illustrate fancy headings.
+		<label>Project name
+		        <input type="text" placeholder="name" />
+		</label>
+		<button class="expand" ng-click="create()">Create</button>
 	</accordion-group>
 </accordion>
-
-<label>Project name
-        <input type="text" placeholder="name" />
-</label>
-<button class="expand" ng-click="create()">Create</button>
 
 <project-list></project-list>
