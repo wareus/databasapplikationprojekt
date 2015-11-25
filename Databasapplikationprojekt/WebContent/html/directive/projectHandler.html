@@ -4,7 +4,7 @@
 	            Create new Project <i class="right" ng-class="{'fi-arrow-down': isopen, 'fi-arrow-right': !isopen}"></i>
 	        </accordion-heading>
 		<label>Project name
-		        <input type="text" placeholder="name" />
+		        <input ng-model="projectHandler.projectName" type="text" placeholder="name" />
 		</label>
 		<button class="expand" ng-click="projectHandler.create()">Create</button>
 	</accordion-group>

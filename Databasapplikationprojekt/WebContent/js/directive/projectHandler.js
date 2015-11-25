@@ -9,8 +9,7 @@ angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', f
 			$scope.projectHandler = {
 				create : function()
 				{
-					console.log("create");
-					new Project({name:"name"}).$save();
+					new Project({name:$scope.projectHandler.projectName}).$save();
 				}
 			}
 			
