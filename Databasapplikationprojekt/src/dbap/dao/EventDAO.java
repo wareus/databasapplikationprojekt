@@ -1,7 +1,11 @@
 package dbap.dao;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import dbap.dao.base.BaseDAO;
 import dbap.dao.dto.Event;
+import dbap.dao.utilities.mapping.RowMapper;
 
 public class EventDAO  extends BaseDAO<Event> {
 	
@@ -11,8 +15,35 @@ public class EventDAO  extends BaseDAO<Event> {
 		super(Event.class);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Event> getAllForUser(int id)
+	{
+		Object [] params = {id};
+		String sql ="SELECT event.* FROM event JOIN user ON user.id = event.id where user.id=?";
+		
+		return (ArrayList<Event>)db.query(sql,params, getMapper()) ;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Event> getAllFromProject(int id)
+	{
+		Object [] params = {id};
+		String sql ="SELECT event.* FROM event JOIN project ON projectID = event.id where projectID=?";
+		
+		return (ArrayList<Event>)db.query(sql,params, getMapper()) ;
+		
+	}
+	
+
+
+@SuppressWarnings("unchecked")
+public ArrayList<Event> getAllFromUser(int id)
+{
+	Object [] params = {id};
+	String sql ="SELECT event.* FROM event JOIN project ON userID = userID where userID=?";
+	
+	return (ArrayList<Event>)db.query(sql,params, getMapper()) ;
 
 }
-
-
-
+}

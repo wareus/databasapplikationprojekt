@@ -35,9 +35,10 @@ public class BaseAPI <T extends BaseDTO>{
     public Response getAll() {
     	
     	ArrayList<T> users = dao.getAll();
+    	
 
     	return Response.status(Status.ACCEPTED).entity(new Gson().toJson(users)).build();
-    	
+  
     }
     @GET
     @Path("{id}")
