@@ -1,0 +1,23 @@
+<accordion close-others="true">
+	<accordion-group is-open="isopen">
+	        <accordion-heading>
+	            Create new Project <i class="right" ng-class="{'fi-arrow-down': isopen, 'fi-arrow-right': !isopen}"></i>
+	        </accordion-heading>
+		<label>Project name
+		        <input type="text" placeholder="name" />
+		</label>
+		<button class="expand" ng-click="projectHandler.create()">Create</button>
+	</accordion-group>
+	<accordion-group is-open="isopenJoin">
+	        <accordion-heading>
+	            Join Project <i class="right" ng-class="{'fi-arrow-down': isopenJoin, 'fi-arrow-right': !isopenJoin}"></i>
+	        </accordion-heading>
+					<div class="row">
+				<div class="large-12 columns">
+					<label>Join project</label> <select>
+						<option ng-repeat="project in projectHandler.projectList track by project.id">{{project.name}}</option>
+					</select>
+				</div>
+			</div>
+	</accordion-group>
+</accordion>

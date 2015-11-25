@@ -3,16 +3,9 @@
 	here can you se all your projects and create new ones
 </div>
 
-<accordion close-others="oneAtATime">
-	<accordion-group is-open="isopen">
-	        <accordion-heading>
-	            Create new Project <i class="right" ng-class="{'fi-arrow-down': isopen, 'fi-arrow-right': !isopen}"></i>
-	        </accordion-heading>
-		<label>Project name
-		        <input type="text" placeholder="name" />
-		</label>
-		<button class="expand" ng-click="create()">Create</button>
-	</accordion-group>
-</accordion>
+
+<project-handler></project-handler>
+
+<hr>
 
 <project-list></project-list>
