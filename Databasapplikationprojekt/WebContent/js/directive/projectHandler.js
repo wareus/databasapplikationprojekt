@@ -9,8 +9,9 @@ angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', f
 			$scope.projectHandler = {
 				create : function()
 				{
-					new Project({name:$scope.projectHandler.projectName}).$save();
-					//TODO new UserWorksOn
+					new Project({name:$scope.projectHandler.projectName}).$save(function(data){
+						UserWorksOn.connectProjectToMe(data.id);
+					});
 				}
 			}
 			

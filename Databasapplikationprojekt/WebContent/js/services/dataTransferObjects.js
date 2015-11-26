@@ -23,7 +23,16 @@ angular.module('dto', ['api'])
 })
 .service('UserWorksOn', function(API) {
 	
-	return API('api/usersWorksOn');
+	
+	var api = API('api/usersWorksOn');
+	
+	api.connectProjectToMe = function(projectID)
+	{
+		UserWorksOn = API('api/usersWorksOn/connectProjectToMe');
+		new UserWorksOn({projectID:projectID}).$save();
+	}
+	
+	return api;
 	
 }) 
 .service('Event', function(API) {
