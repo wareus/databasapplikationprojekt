@@ -12,10 +12,14 @@ angular.module('loginDirective', [ 'login' ]).directive('login', function(Login)
 		controller : [ '$scope', function($scope) {
 			$scope.loginClick = function()
 			{
-				Login.save($scope.login).$promise.catch(function(response) {
-				    if(response.status == 401) alert("please retry to login agin", "Login failed");
+				Login.save($scope.login, function(data) {
+					
+				}).$promise.catch(function(response) {
+					
+					
 				});
 				
+
 				
 				
 			}

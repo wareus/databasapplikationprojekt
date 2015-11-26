@@ -42,7 +42,7 @@ public class LoginAPI
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", dbUser.id);
 			session.setAttribute("userName", dbUser.name);
-			session.setAttribute("admin", dbUser.rights);
+			session.setAttribute("rights", dbUser.rights);
 
 			return Response.status(Response.Status.ACCEPTED).build();
 		}

@@ -1,4 +1,4 @@
-angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', function(Project) {
+angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', function(Project, UserWorksOn) {
 
 	return {
 		restrict : 'E',
@@ -10,10 +10,11 @@ angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', f
 				create : function()
 				{
 					new Project({name:$scope.projectHandler.projectName}).$save();
+					//TODO new UserWorksOn
 				}
 			}
 			
-			Project.query(function(data) {
+			Project.othersProjects(function(data) {
 				$scope.projectHandler.projectList = data;
 			});
 			

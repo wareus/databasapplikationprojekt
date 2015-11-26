@@ -7,7 +7,7 @@ angular.module('projectListDirective', ['dto']).directive('projectList', functio
 
 		controller : [ '$scope', function($scope) {
 			
-			Project.query(function(data) {
+			Project.yourProjects(function(data) {
 				$scope.projectList = data;
 			});
 		} ]
