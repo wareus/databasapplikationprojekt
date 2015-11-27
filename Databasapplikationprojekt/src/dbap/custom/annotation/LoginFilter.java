@@ -24,7 +24,7 @@ public class LoginFilter implements ContainerRequestFilter
 
 		if (session.getAttribute("id") == null)
 		{
-			requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("User cannot access the resource.").build());
+			requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
 		}
 
 	}

@@ -1,13 +1,26 @@
-angular.module('errorHandler', []).config(["$httpProvider", function ($httpProvider) {
+angular.module('errorHandler', ['mm.foundation']).config(['$httpProvider', function ($httpProvider) {
 
-	$httpProvider.interceptors.push(function($q) {
+	
+	$httpProvider.interceptors.push(function($q, $injector) {
 
 			
-		console.log("hej");
+		
 		return{
 			       'responseError': function(response) {
-			        console.log("rejection = ");
-			        console.log(response);
+			        if(response.status === 401)
+			        {
+			        	var $modal;
+			        	$modal = $modal || $injector.get('$modal');
+			        	var modalInstance = $modal.open({
+					        templateUrl: 'html/modal/loginModal.html',
+					        controller: function($scope,$modalInstance)
+					        {
+					        	 $scope.cancel = function () {
+					        		 $modalInstance.dismiss('cancel');
+					        	};
+					        }
+					    });
+			        }
 			        return $q.reject(response);
 			      }
 

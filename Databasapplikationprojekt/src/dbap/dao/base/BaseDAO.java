@@ -85,6 +85,12 @@ public class BaseDAO <T extends BaseDTO>{
 	{
 		return tabelName;
 	}
+
+
+
+	public RowMapper<T> getMapper() {
+		return mapper;
+	}
 	
 	
 }
