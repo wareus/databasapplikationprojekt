@@ -12,6 +12,7 @@ angular.module('loginModalButtonDirective', ['mm.foundation']).directive('loginM
 			        templateUrl: 'html/modal/loginModal.html',
 			        controller: function($scope,$modalInstance)
 			        {
+			        	
 			        	 $scope.cancel = function () {
 			        		 $modalInstance.dismiss('cancel');
 			        	};

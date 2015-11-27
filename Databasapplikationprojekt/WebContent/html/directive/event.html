@@ -3,22 +3,26 @@
 		<div class="large-12 columns">
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="text" placeholder="Title" />
+					<input ng-model= "title" type="text" placeholder="Title" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="date" placeholder="StartDate yyyy-mm-dd" />
+					<datepicker>
+					<input ng-model="date" type="text" placeholder="startDate"/>
+					</datepicker>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
-					<input type="date" placeholder="EndDate yyyy-mm-dd" />
+					<datepicker>
+					<input ng-model="date2" type="text" placeholder="endDate"/>
+					</datepicker>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 large-centered columns">
-					<button ng-click="eventsClick()" class="expand">Save event</button>
+					<button ng-click="eventClick()" class="expand">Save event</button>
 				</div>
 			</div>
 		</div>
