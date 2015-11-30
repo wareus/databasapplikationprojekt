@@ -5,7 +5,7 @@ angular.module('eventModalButtonDirective', ['mm.foundation']).directive('eventM
 	return {
 		
 		restrict : 'E',
-		template : '<button ng-click="eventModalButtonClick()">Event</button>',
+		template : '<button ng-click="eventModalButtonClick()">Add event</button>',
 		controller : [ '$scope', '$modal', function($scope,$modal) {
 			$scope.eventModalButtonClick = function()
 			{
@@ -19,6 +19,7 @@ angular.module('eventModalButtonDirective', ['mm.foundation']).directive('eventM
 			        	};
 			        }
 			    });
+			   
 			}
 		} ]
 	}

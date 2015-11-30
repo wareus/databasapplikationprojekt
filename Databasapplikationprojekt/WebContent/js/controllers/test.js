@@ -1,5 +1,5 @@
-angular.module('test', ['dto','login'])
-.controller("testController", function($scope, User, Login){
+angular.module('test', ['dto','login','event'])
+.controller("testController", function($scope, User, Login, Event){
 	
 	console.log("test");
 	
@@ -19,11 +19,6 @@ angular.module('test', ['dto','login'])
 	$scope.save = function()
 	{
 		new User({name:"name", rights:2, password:"passsword"}).$save();
-		
-	}
-	$scope.addEvent = function()
-	{
-		console.log("spara event");
 		
 	}
 	

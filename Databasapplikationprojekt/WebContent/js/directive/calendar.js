@@ -30,7 +30,7 @@ angular.module('calendarDirective', [ 'ui.calendar' ]).directive('calendar',func
 									calendar : {
 										
 										height : 500,
-										editable : true,
+//										editable : true,
 										weekNumbers: true,
 										header : {
 											
@@ -39,28 +39,28 @@ angular.module('calendarDirective', [ 'ui.calendar' ]).directive('calendar',func
 											right : 'today prev,next'
 										},
 										selectable: true,
-										selectHelper: true,
-										select: function(start, end) {
-											var title = prompt('Event Title:');
-											var eventData;
-											if (title) {
-												eventData = {
-													title: title,
-													start: start,
-													end: end,
-												}
-												$scope.eventSources = [{
-													events: [	{		
-												         title: 'Hejsan',												        
-												         start: '2015-11-16',
-												         end: '2015-11-22'
-													}]
-												}];
-												
-											}
-											console.log(eventData);
-											
-										},
+//										selectHelper: true,
+//										select: function(start, end) {
+//											var title = prompt('Event Title:');
+//											var eventData;
+//											if (title) {
+//												eventData = {
+//													title: title,
+//													start: start,
+//													end: end,
+//												}
+//												$scope.eventSources = [{
+//													events: [	{		
+//												         title: 'Hejsan',												        
+//												         start: '2015-11-16',
+//												         end: '2015-11-22'
+//													}]
+//												}];
+//												
+//											}
+//											console.log(eventData);
+//											
+//										},
 										
 										views : {												
 											basicQuarter : {

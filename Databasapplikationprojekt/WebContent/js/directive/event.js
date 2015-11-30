@@ -12,12 +12,12 @@ angular.module('eventDirective', [ 'event' ]).directive('event', function(Event)
 			$scope.eventClick = function()
 			{
 				
-				console.log($scope);
-//				Event.addEvent($scope.event).$promise.catch(function(response) {
-//				    if(response.status == 401) alert("Something went wrong", "Try again!");
-//				}
-//				);
 				
+				Event.save($scope.event).$promise.catch(function(response) {
+				    if(response.status == 401) alert("Something went wrong", "Try again!");
+				}
+				);
+				console.log($scope);
 				
 				
 			}
