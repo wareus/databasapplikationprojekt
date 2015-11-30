@@ -14,8 +14,11 @@
 	        </accordion-heading>
 					<div class="row">
 				<div class="large-12 columns">
-					<label>Join project</label> <select>
-						<option ng-repeat="project in projectHandler.projectList track by project.id">{{project.name}}</option>
+					<label>Join project</label> 
+					<select 
+					ng-model="project" 
+					ng-change="projectHandler.join(project)" 
+					ng-options="project as project.name for project in  projectHandler.projectList track by project.id">
 					</select>
 				</div>
 			</div>

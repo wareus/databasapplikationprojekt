@@ -19,7 +19,7 @@ public class ProjectDAO extends BaseDAO<Project> {
 	@SuppressWarnings("unchecked")
 	public ArrayList<Project> getForUser(int id) {
 		Object [] params = {id};
-		String sql ="SELECT * FROM UserWorksOn JOIN project ON project.id = UserWorksOn.projectID where UserWorksOn.userID=?";
+		String sql ="SELECT project.* FROM UserWorksOn JOIN project ON project.id = UserWorksOn.projectID WHERE UserWorksOn.userID=?";
 		
 		return (ArrayList<Project>)db.query(sql,params, getMapper()) ;
 	}
@@ -27,7 +27,7 @@ public class ProjectDAO extends BaseDAO<Project> {
 	@SuppressWarnings("unchecked")
 	public ArrayList<Project> getForNotUser(int id) {
 		Object [] params = {id};
-		String sql ="SELECT * FROM UserWorksOn JOIN project ON project.id = UserWorksOn.projectID where UserWorksOn.userID!=?";
+		String sql ="SELECT project.* FROM UserWorksOn JOIN project ON project.id = UserWorksOn.projectID WHERE UserWorksOn.userID!=?";
 		
 		return (ArrayList<Project>)db.query(sql,params, getMapper()) ;
 	}

@@ -27,8 +27,6 @@ public class UserWorksOnAPI extends BaseAPI<UserWorksOn> {
 	@Path("connectProjectToMe")
     public Response connectProjectToMe(String json) {
 
-		System.out.println("test");
-		System.out.println(json);
     	UserWorksOn userWorksOn = new Gson().fromJson(json, UserWorksOn.class);
     	
     	userWorksOn.userID = (int) request.getSession().getAttribute("id");

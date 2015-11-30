@@ -22,6 +22,7 @@
 <script src="js/services/login.js"></script>
 <script src="js/controllers/test.js"></script>
 <script src="js/controllers/projectView.js"></script>
+<script src="js/controllers/mainController.js"></script>
 <script src="js/directive/login.js"></script>
 <script src="js/directive/loginModal.js"></script>
 <script src="js/directive/calendar.js"></script>
@@ -37,7 +38,7 @@
 	$(document).foundation();
 </script>
 </head>
-<body>
+<body ng-controller="mainController">
 
 	<div class="row">
 		<nav class="top-bar" data-topbar role="navigation">
@@ -53,7 +54,7 @@
 			<section class="top-bar-section">
 				<ul class="right">
 					<li class="active"><a href="#/projectView">Projects</a></li>
-					<li><a href="#/">Logout</a></li>
+					<li><a ng-click="logout()">Logout</a></li>
 				</ul>
 
 				<ul class="left">
