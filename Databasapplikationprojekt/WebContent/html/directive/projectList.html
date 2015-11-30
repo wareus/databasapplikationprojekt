@@ -1,8 +1,8 @@
 <br>
-<div class="panel" ng-repeat="project in projectList track by project.id">
+<div class="panel" ng-repeat="project in projectList.data track by project.id">
   {{project.name}}
   <div class="right">
-  	<button class="tiny">Select</button>
+  	<button class="tiny" ng-click="projectList.select($index)">Select</button>
   	<button class="alert tiny">Delete</button>
   </div>
 </div>

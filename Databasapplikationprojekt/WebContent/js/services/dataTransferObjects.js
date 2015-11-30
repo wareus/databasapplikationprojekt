@@ -19,6 +19,11 @@ angular.module('dto', ['api'])
 		API('api/project/yourProjects').query(callback);
 	}
 	
+	api.select = function(id)
+	{
+		API('api/project/select/' +id).save();
+	}
+	
 	return api;
 })
 .service('UserWorksOn', function(API) {
