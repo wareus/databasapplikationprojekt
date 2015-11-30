@@ -27,23 +27,21 @@ public class ProjectAPI extends BaseAPI<Project>{
 		dao = new ProjectDAO();
 	}
 	@Login
-	@Path("forUser/{id}")
+	@Path("yourProjects")
 	@GET
-	public Response getForUser(@PathParam("id") int id)
+	public Response getYourProjects()
 	{
-		System.out.println(id);
-		ArrayList<Project> project = ((ProjectDAO)dao).getForUser(id);
+		ArrayList<Project> project = ((ProjectDAO)dao).getForUser((int) request.getSession().getAttribute("id"));
 		
 		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(project)).build();
 	}
 	
 	@Login
-	@Path("forNotUser/{id}")
+	@Path("othersProjects")
 	@GET
-	public Response getForNotUser(@PathParam("id") int id)
+	public Response getOthersProjects()
 	{
-		System.out.println(id);
-		ArrayList<Project> projectuser = ((ProjectDAO)dao).getForNotUser(id);
+		ArrayList<Project> projectuser = ((ProjectDAO)dao).getForNotUser((int) request.getSession().getAttribute("id"));
 		
 		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(projectuser)).build();
 }

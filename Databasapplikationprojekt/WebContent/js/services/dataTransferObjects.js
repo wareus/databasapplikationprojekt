@@ -7,11 +7,32 @@ angular.module('dto', ['api'])
 })
 .service('Project', function(API) {
 	
-	return API('api/project');
+	var api = API('api/project');
+	
+	api.othersProjects = function( callback)
+	{
+		API('api/project/othersProjects').query(callback);
+	}
+	
+	api.yourProjects = function(callback)
+	{
+		API('api/project/yourProjects').query(callback);
+	}
+	
+	return api;
 })
 .service('UserWorksOn', function(API) {
 	
-	return API('api/usersWorksOn');
+	
+	var api = API('api/usersWorksOn');
+	
+	api.connectProjectToMe = function(projectID)
+	{
+		UserWorksOn = API('api/userWorksOn/connectProjectToMe');
+		new UserWorksOn({projectID:projectID}).$save();
+	}
+	
+	return api;
 	
 }) 
 .service('Event', function(API) {

@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ArnProjectPlanner</title>
 <link rel="stylesheet" href="css/foundation.css" />
+<link rel="stylesheet" href="img/foundation-icons.css" />
 <link href='css/fullcalendar.css' rel='stylesheet' />
 <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
 <link href='css/angular-datepicker.css' rel='stylesheet' type="text/css" />
+<link href='css/style.css' rel='stylesheet' />
+
 <script type="text/javascript" src="js/lib/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="js/lib/angular.min.js"></script>
 <script type="text/javascript" src="js/lib/angular-route.js"></script>
@@ -27,24 +30,28 @@
 <script src="js/services/login.js"></script>
 <script src="js/services/event.js"></script>
 <script src="js/controllers/test.js"></script>
+<script src="js/controllers/projectView.js"></script>
+<script src="js/controllers/mainController.js"></script>
 <script src="js/directive/login.js"></script>
 <script src="js/directive/loginModal.js"></script>
 <script src="js/directive/calendar.js"></script>
 <script src="js/directive/event.js"></script>
 <script src="js/directive/eventModal.js"></script>
-
+<script src="js/directive/projectList.js"></script>
+<script src="js/directive/projectHandler.js"></script>
 
 <script>
 	$(document).foundation();
 </script>
 </head>
 <body>
+<body ng-controller="mainController">
 	<div class="row">
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul class="title-area">
 				<li class="name">
 					<h1>
-						<a href="#/">Home</a>
+						<a href="#/"><i class="fi-home"></i></a>
 					</h1>
 				</li>
 				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -52,16 +59,20 @@
 
 			<section class="top-bar-section">
 				<ul class="right">
-					<login-modal-button></login-modal-button>
+					<li class="active"><a href="#/projectView">Projects</a></li>
+					<li><a ng-click="logout()">Logout</a></li>
 				</ul>
-
 				<ul class="left">
-					<li class="active"><a href="http://localhost:8080/Databasapplikationprojekt/#/calendar">Kalender</a></li>
+					<li class="active"><a href="#/calendar">Calendar</a></li>
 				</ul>
 			</section>
 		</nav>
 	</div>
-	<div ng-view></div>
+	<div class="row">
+		<div class="large-12 columns">
+			<div ng-view></div>
+		</div>
+	</div>
 
 	
 
