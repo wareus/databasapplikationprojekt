@@ -24,7 +24,7 @@ angular.module('dto', ['api'])
 .service('UserWorksOn', function(API) {
 	
 	
-	var api = API('api/usersWorksOn');
+	var api = API('api/userWorksOn');
 	
 	api.connectProjectToMe = function(projectID)
 	{

@@ -16,6 +16,7 @@
 <script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
 <script type="text/javascript" src="js/lib/mm-foundation-tpls-0.6.0.min.js"></script>
 <script src="js/route.js"></script>
+<script src="js/alert.js"></script>
 <script src="js/errorHandler.js"></script>
 <script src="js/services/dataTransferObjects.js"></script>
 <script src="js/services/api.js"></script>
@@ -66,6 +67,12 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<div ng-view></div>
+		</div>
+	</div>
+	
+	<div class="fixed-bottom">
+		<div class="row">	
+			<div class="medium-12 columns" id="alertBar"></div>
 		</div>
 	</div>
 
