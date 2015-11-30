@@ -11,6 +11,11 @@ angular.module('projectListDirective', ['dto']).directive('projectList', functio
 					select:function(id)
 					{
 						Project.select(id);
+					},
+					delete:function(id)
+					{
+						console.log(id);
+						new Project({id:id}).$remove();
 					}
 			};
 			Project.yourProjects(function(data) {
