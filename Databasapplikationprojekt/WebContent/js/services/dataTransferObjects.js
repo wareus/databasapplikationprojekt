@@ -28,7 +28,7 @@ angular.module('dto', ['api'])
 	
 	api.connectProjectToMe = function(projectID)
 	{
-		UserWorksOn = API('api/usersWorksOn/connectProjectToMe');
+		UserWorksOn = API('api/userWorksOn/connectProjectToMe');
 		new UserWorksOn({projectID:projectID}).$save();
 	}
 	

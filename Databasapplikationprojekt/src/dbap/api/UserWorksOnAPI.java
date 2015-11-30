@@ -1,6 +1,7 @@
 package dbap.api;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -24,8 +25,9 @@ public class UserWorksOnAPI extends BaseAPI<UserWorksOn> {
 	
 	@POST
 	@Path("connectProjectToMe")
-    public Response create(String json) {
+    public Response connectProjectToMe(String json) {
 
+		System.out.println("test");
 		System.out.println(json);
     	UserWorksOn userWorksOn = new Gson().fromJson(json, UserWorksOn.class);
     	
