@@ -1,5 +1,5 @@
-angular.module('test', ['dto','login','event'])
-.controller("testController", function($scope, User, Login, Event){
+angular.module('test', ['dto','login'])
+.controller("testController", function($scope, User, Login){
 	
 	console.log("test");
 	

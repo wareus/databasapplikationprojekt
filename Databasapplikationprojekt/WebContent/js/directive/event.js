@@ -1,4 +1,4 @@
-angular.module('eventDirective', [ 'event' ]).directive('event', function(Event) {
+angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$filter) {
 
 	
 	
@@ -13,11 +13,26 @@ angular.module('eventDirective', [ 'event' ]).directive('event', function(Event)
 			{
 				
 				
-				Event.save($scope.event).$promise.catch(function(response) {
-				    if(response.status == 401) alert("Something went wrong", "Try again!");
-				}
-				);
-				console.log($scope);
+				
+				var event = $scope.event;
+				event.startDate = {
+						date:{
+							year:$filter('date')($scope.event.startDate,'yyyy'),
+							month:$filter('date')($scope.event.startDate,'M'),
+							day:$filter('date')($scope.event.startDate,'d')
+						}
+				
+				},
+				event.endDate = {
+						date:{
+							year:$filter('date')($scope.event.endDate,'yyyy'),
+							month:$filter('date')($scope.event.endDate,'M'),
+							day:$filter('date')($scope.event.endDate,'d')
+						}
+				
+				};
+		
+				new Event(event).$save();
 				
 				
 			}

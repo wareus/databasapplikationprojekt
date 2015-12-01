@@ -32,6 +32,7 @@ public class EventAPI  extends BaseAPI<Event>{
 		return super.getAll();
 	}
 	
+	
 	@Login
 	@Path("forUser/{id}")
 	@GET

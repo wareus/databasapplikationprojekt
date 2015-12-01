@@ -3,20 +3,20 @@
 		<div class="large-12 columns">
 			<div class="row">
 				<div class="large-12 columns">
-					<input ng-model= "title" type="text" placeholder="Title" />
+					<input ng-model= "event.title" type="text" placeholder="Title" />
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
-					<datepicker>
-					<input ng-model="date" type="text" placeholder="startDate"/>
+					<datepicker date-format="yyyy-MM-dd">
+					<input ng-model="event.startDate"  type="text" placeholder="startDate"/>
 					</datepicker>
 				</div>
 			</div>
 			<div class="row">
 				<div class="large-12 columns">
-					<datepicker>
-					<input ng-model="date2" type="text" placeholder="endDate"/>
+					<datepicker date-format="yyyy-MM-dd">
+					<input ng-model="event.endDate" type="text" placeholder="endDate"/>
 					</datepicker>
 				</div>
 			</div>
