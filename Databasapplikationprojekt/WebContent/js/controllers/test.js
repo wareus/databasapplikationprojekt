@@ -21,6 +21,7 @@ angular.module('test', ['dto','login'])
 		new User({name:"name", rights:2, password:"passsword"}).$save();
 		
 	}
+	
 	$scope.update = function()
 	{
 		User.query(function(data) {

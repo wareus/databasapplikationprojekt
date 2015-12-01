@@ -1,6 +1,5 @@
 angular.module('loginDirective', [ 'login' ]).directive('login', function(Login) {
 
-
 	
 	
 

@@ -1,15 +1,16 @@
 
 
-angular.module('loginModalButtonDirective', ['mm.foundation']).directive('loginModalButton', function() {
+angular.module('eventModalButtonDirective', ['mm.foundation']).directive('eventModalButton', function() {
 
 	return {
+		
 		restrict : 'E',
-		template : '<button ng-click="loginModalButtonClick()">Login</button>',
+		template : '<button ng-click="eventModalButtonClick()">Add event</button>',
 		controller : [ '$scope', '$modal', function($scope,$modal) {
-			$scope.loginModalButtonClick = function()
+			$scope.eventModalButtonClick = function()
 			{
 			    var modalInstance = $modal.open({
-			        templateUrl: 'html/modal/loginModal.html',
+			        templateUrl: 'html/modal/eventModal.html',
 			        controller: function($scope,$modalInstance)
 			        {
 			        	
@@ -18,6 +19,7 @@ angular.module('loginModalButtonDirective', ['mm.foundation']).directive('loginM
 			        	};
 			        }
 			    });
+			   
 			}
 		} ]
 	}

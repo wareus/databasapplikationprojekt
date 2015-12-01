@@ -1,0 +1,30 @@
+<div class="large-3 large-centered columns">
+	<div class="row">
+		<div class="large-12 columns">
+			<div class="row">
+				<div class="large-12 columns">
+					<input ng-model= "event.title" type="text" placeholder="Title" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<datepicker date-format="yyyy-MM-dd">
+					<input ng-model="event.startDate"  type="text" placeholder="startDate"/>
+					</datepicker>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 columns">
+					<datepicker date-format="yyyy-MM-dd">
+					<input ng-model="event.endDate" type="text" placeholder="endDate"/>
+					</datepicker>
+				</div>
+			</div>
+			<div class="row">
+				<div class="large-12 large-centered columns">
+					<button ng-click="eventClick()" class="expand">Save event</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="img/foundation-icons.css" />
 <link href='css/fullcalendar.css' rel='stylesheet' />
 <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='css/angular-datepicker.css' rel='stylesheet' type="text/css" />
 <link href='css/style.css' rel='stylesheet' />
 
 <script type="text/javascript" src="js/lib/jquery-2.1.4.min.js"></script>
@@ -15,6 +16,13 @@
 <script type="text/javascript" src="js/lib/angular-route.js"></script>
 <script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
 <script type="text/javascript" src="js/lib/mm-foundation-tpls-0.6.0.min.js"></script>
+<script type="text/javascript" src='js/lib/jquery.min.js'></script>
+<script type="text/javascript" src='js/lib/moment.min.js'></script>
+<script type="text/javascript" src="js/lib/foundation.min.js"></script>
+<script type="text/javascript" src="js/lib/angular-datepicker.js"></script>
+<script type="text/javascript" src='js/lib/calendar.js'></script>
+<script type="text/javascript" src='js/lib/fullcalendar.min.js'></script>
+<script type="text/javascript" src='js/lib/gcal.js'></script>
 <script src="js/route.js"></script>
 <script src="js/alert.js"></script>
 <script src="js/errorHandler.js"></script>
@@ -27,20 +35,17 @@
 <script src="js/directive/login.js"></script>
 <script src="js/directive/loginModal.js"></script>
 <script src="js/directive/calendar.js"></script>
+<script src="js/directive/event.js"></script>
+<script src="js/directive/eventModal.js"></script>
 <script src="js/directive/projectList.js"></script>
 <script src="js/directive/projectHandler.js"></script>
-<script type="text/javascript" src='js/lib/jquery.min.js'></script>
-<script type="text/javascript" src='js/lib/moment.min.js'></script>
-<script type="text/javascript" src="js/lib/foundation.min.js"></script>
-<script type="text/javascript" src='js/lib/calendar.js'></script>
-<script type="text/javascript" src='js/lib/fullcalendar.min.js'></script>
-<script type="text/javascript" src='js/lib/gcal.js'></script>
+
 <script>
 	$(document).foundation();
 </script>
 </head>
+<body>
 <body ng-controller="mainController">
-
 	<div class="row">
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul class="title-area">
@@ -57,7 +62,6 @@
 					<li class="active"><a href="#/projectView">Projects</a></li>
 					<li><a ng-click="logout()">Logout</a></li>
 				</ul>
-
 				<ul class="left">
 					<li class="active"><a href="#/calendar">Calendar</a></li>
 				</ul>
