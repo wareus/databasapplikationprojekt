@@ -22,7 +22,6 @@ public class EventAPI  extends BaseAPI<Event>{
 	
 	@PostConstruct
 	public void init() {
-		
 		dao = new EventDAO();
 	}
 	@Override
@@ -38,6 +37,7 @@ public class EventAPI  extends BaseAPI<Event>{
 	@GET
 	public Response getForUser(@PathParam("id") int id)
 	{
+		
 		System.out.println(id);
 		ArrayList<Event> events = ((EventDAO)dao).getAllForUser(id);
 		

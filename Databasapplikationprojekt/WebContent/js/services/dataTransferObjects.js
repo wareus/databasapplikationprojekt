@@ -42,5 +42,14 @@ angular.module('dto', ['api'])
 }) 
 .service('Event', function(API) {
 	
-	return API('api/event');
+var api = API('api/event');
+	
+	api.yourEvents = function(id)
+	{
+		API('api/event/forUser/' +id).$query(id);
+	}
+	
+	
+	return api;
+	
 });
