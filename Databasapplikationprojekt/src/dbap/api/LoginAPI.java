@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import dbap.dao.UserDAO;
 import dbap.dao.dto.User;
+import dbap.exceptions.NotLoggedInException;
 
 @Path("login")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -46,8 +47,9 @@ public class LoginAPI
 
 			return Response.status(Response.Status.ACCEPTED).build();
 		}
-		return Response.status(Response.Status.UNAUTHORIZED).build();
-
+		
+		throw new NotLoggedInException();
+		
 	}
 
 	@GET
