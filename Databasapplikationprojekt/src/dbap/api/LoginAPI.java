@@ -1,5 +1,8 @@
 package dbap.api;
 
+
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
@@ -13,6 +16,7 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 
+import dbap.custom.annotation.Login;
 import dbap.dao.UserDAO;
 import dbap.dao.dto.User;
 
@@ -24,7 +28,7 @@ public class LoginAPI
 
 	@Context
 	private HttpServletRequest request;
-
+	@Login
 	@POST
 	@Path("/")
 	public Response login(String json)
@@ -63,5 +67,21 @@ public class LoginAPI
 		return Response.status(Response.Status.ACCEPTED).build();
 
 	}
+  
+	@Login
+	@GET
+	@Path("/isLoggedIn")
+	public Response loggedIn()
+	{
+	System.out.println("logIn");
+ 
+	HttpSession session = request.getSession(false);
+	if (session!=null)
+	{
+    session.getAttribute("userName");
+	}
+	return Response.status(Response.Status.ACCEPTED).build();
 
 }
+
+}	
