@@ -44,9 +44,9 @@ angular.module('dto', ['api'])
 	
 var api = API('api/event');
 	
-	api.yourEvents = function(id)
+	api.forYou = function(callback)
 	{
-		API('api/event/forUser/' +id).$query(id);
+		API('api/event/forYou').query(callback);
 	}
 	
 	
