@@ -28,7 +28,6 @@ public class LoginAPI
 
 	@Context
 	private HttpServletRequest request;
-	@Login
 	@POST
 	@Path("/")
 	public Response login(String json)
