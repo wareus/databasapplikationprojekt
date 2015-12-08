@@ -13,7 +13,6 @@ angular
 									$scope.events = [];
 									$scope.eventSources = new Array();
 
-									$scope.test = function() {
 
 										
 										Event
@@ -37,7 +36,6 @@ angular
 													}
 												})
 
-									};
 									$scope.uiConfig = {
 
 										calendar : {
