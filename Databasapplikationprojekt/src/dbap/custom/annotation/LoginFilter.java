@@ -9,6 +9,8 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
+import dbap.exceptions.NotLoggedInException;
+
 @Login
 public class LoginFilter implements ContainerRequestFilter
 {
@@ -24,7 +26,7 @@ public class LoginFilter implements ContainerRequestFilter
 
 		if (session.getAttribute("id") == null)
 		{
-			requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
+			throw new NotLoggedInException();
 		}
 
 	}

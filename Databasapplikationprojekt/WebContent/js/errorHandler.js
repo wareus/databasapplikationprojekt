@@ -17,6 +17,7 @@ angular.module('errorHandler', ['mm.foundation']).config(['$httpProvider', funct
 				        	$modal = $modal || $injector.get('$modal');
 				        	var modalInstance = $modal.open({
 						        templateUrl: 'html/modal/loginModal.html',
+						        backdrop : 'static',
 						        controller: function($scope, $modalInstance)
 						        {
 						        	 $scope.cancel = function () {
@@ -27,6 +28,14 @@ angular.module('errorHandler', ['mm.foundation']).config(['$httpProvider', funct
 						    });
 			        	}
 			        }
+			        
+			        if(response.data.header !== undefined && response.data.message !== undefined)
+			        {
+			        	alert(response.data.header, response.data.message);
+			        	console.log(response);
+			        }
+			        
+			        
 			        return $q.reject(response);
 			      }
 

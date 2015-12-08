@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 
 import dbap.dao.UserDAO;
 import dbap.dao.dto.User;
+import dbap.exceptions.AlertException;
+import dbap.exceptions.BadRequestException;
 import dbap.exceptions.NotLoggedInException;
 
 @Path("login")
@@ -34,7 +36,8 @@ public class LoginAPI
 		System.out.println(json);
 		User user = new Gson().fromJson(json, User.class);
 		
-		if(user == null) return Response.status(Response.Status.BAD_REQUEST).build();
+		if(user == null) 
+			throw new BadRequestException();
 		
 		User dbUser = new UserDAO().getByName(user.name);
 
