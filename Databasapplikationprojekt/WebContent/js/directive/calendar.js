@@ -18,7 +18,7 @@ angular
 										Event
 												.forYou(function(data) {
 
-													for (i = 0; i < data.length - 1; i++) {
+													for (i = 0; i < data.length; i++) {
 														$scope.events
 																.push({
 																	title : data[i].title,

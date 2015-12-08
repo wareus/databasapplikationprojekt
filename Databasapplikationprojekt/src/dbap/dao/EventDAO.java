@@ -1,11 +1,9 @@
 package dbap.dao;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import dbap.dao.base.BaseDAO;
 import dbap.dao.dto.Event;
-import dbap.dao.utilities.mapping.RowMapper;
 
 public class EventDAO  extends BaseDAO<Event> {
 	

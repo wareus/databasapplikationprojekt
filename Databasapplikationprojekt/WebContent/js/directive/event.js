@@ -31,8 +31,8 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 						}
 				
 				};
-		
-				new Event(event).$save();
+				
+				Event.addForYou(new Event(event));
 				
 				
 			}
