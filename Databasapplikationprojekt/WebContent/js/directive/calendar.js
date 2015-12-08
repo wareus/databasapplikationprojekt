@@ -15,7 +15,7 @@ angular
 
 									$scope.test = function() {
 
-										var event = $scope.event;
+										
 										Event
 												.forYou(function(data) {
 
@@ -30,7 +30,9 @@ angular
 																	end : new Date(
 																			data[i].endDate.date.year,
 																			data[i].endDate.date.month - 1,
-																			data[i].endDate.date.day)
+																			data[i].endDate.date.day),
+																	color: 'yellow',   // an option!
+																	textColor: 'black'
 																});
 													}
 												})
