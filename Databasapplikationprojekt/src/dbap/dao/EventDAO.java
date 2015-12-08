@@ -19,7 +19,7 @@ public class EventDAO  extends BaseDAO<Event> {
 	public ArrayList<Event> getAllForUser(int id)
 	{
 		Object [] params = {id};
-		String sql ="SELECT event.* FROM event JOIN user ON user.id = event.id where user.id=?";
+		String sql ="SELECT event.* FROM event JOIN user ON user.id = event.UserID where user.id=?";
 		
 		return (ArrayList<Event>)db.query(sql,params, getMapper()) ;
 		

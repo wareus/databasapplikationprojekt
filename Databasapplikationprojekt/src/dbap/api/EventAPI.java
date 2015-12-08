@@ -43,7 +43,17 @@ public class EventAPI  extends BaseAPI<Event>{
 		
 		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(events)).build();
 	}
-	
+	@Login
+	@Path("forYou")
+	@GET
+	public Response getForUser()
+	{
+		int id = (int) request.getSession().getAttribute("id");
+		
+		ArrayList<Event> events = ((EventDAO)dao).getAllForUser(id);
+		
+		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(events)).build();
+	}
 	
 }
 
