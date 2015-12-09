@@ -27,9 +27,11 @@ public class ProjectDAO extends BaseDAO<Project> {
 	@SuppressWarnings("unchecked")
 	public ArrayList<Project> getForNotUser(int id) {
 		Object [] params = {id};
-		String sql = "SELECT* FROM project INNER JOIN userworkson ON userworkson.projectID=userworkson.userID where project.id!=? group by project.id";
 		
-		return (ArrayList<Project>)db.query(sql,params, getMapper()) ;
+		
+		String sql = "SELECT project.* FROM UserWorksOn JOIN project ON project.id = UserWorksOn.projectID  WHERE userID != ? GROUP BY projectID";
+		
+		return (ArrayList<Project>)db.query(sql,params, getMapper());
 	}
 
 
