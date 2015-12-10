@@ -14,6 +14,8 @@ angular.module('loginDirective', [ 'login' ]).directive('login', function(Login)
 					
 					var loginSucceeded = $scope.$parent.$parent.cancel;
 					
+					console.log($scope.$parent.$root.$$childHead.$$childHead);
+					
 					if(loginSucceeded !== undefined)
 						loginSucceeded();
 					
@@ -21,9 +23,6 @@ angular.module('loginDirective', [ 'login' ]).directive('login', function(Login)
 					
 					
 				});
-				
-
-				
 				
 			}
 		} ]
