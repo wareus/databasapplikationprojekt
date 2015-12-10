@@ -9,39 +9,80 @@ angular
 
 						controller : [
 								'$scope',
-								function($scope, $resource) {
-									$scope.events = [];
-									$scope.eventSources = new Array();
-
-
+								function($scope, uiCalendarConfig) {
+										$scope.events = [];
+										$scope.eventSources = [];
 										
+										$scope.test = function() {
+											Event
+											.forYou(function(data) {
+												$scope.calendar.fullCalendar('removeEventSource', $scope.events);
+												$scope.events = [];
+												
+												for (i = 0; i < data.length; i++) {
+													
+													$scope.events
+															.push({
+																title : data[i].title,
+																start : new Date(
+																		data[i].startDate.date.year,
+																		data[i].startDate.date.month - 1,
+																		data[i].startDate.date.day),
+																end : new Date(
+																		data[i].endDate.date.year,
+																		data[i].endDate.date.month - 1,
+																		data[i].endDate.date.day),
+																color: 'yellow',   // an option!
+																textColor: 'black',
+																stick : true,
+																allDay: false
+															});
+													
+												}
+												$scope.calendar.fullCalendar('addEventSource', $scope.events);
+												
+												
+											});
+											
+										};
 										Event
-												.forYou(function(data) {
+										.forYou(function(data) {
+											
+											if(data.length !== null) {
+											for (i = 0; i < data.length; i++) {
+												
+												$scope.events
+														.push({
+															title : data[i].title,
+															start : new Date(
+																	data[i].startDate.date.year,
+																	data[i].startDate.date.month - 1,
+																	data[i].startDate.date.day),
+															end : new Date(
+																	data[i].endDate.date.year,
+																	data[i].endDate.date.month - 1,
+																	data[i].endDate.date.day),
+															color: 'yellow',   // an option!
+															textColor: 'black',
+															stick : true
+														});
+											}
+											$scope.calendar.fullCalendar('addEventSource', $scope.events);
+											}
+										});
+									
+									
+											
+										
 
-													for (i = 0; i < data.length; i++) {
-														$scope.events
-																.push({
-																	title : data[i].title,
-																	start : new Date(
-																			data[i].startDate.date.year,
-																			data[i].startDate.date.month - 1,
-																			data[i].startDate.date.day),
-																	end : new Date(
-																			data[i].endDate.date.year,
-																			data[i].endDate.date.month - 1,
-																			data[i].endDate.date.day),
-																	color: 'yellow',   // an option!
-																	textColor: 'black'
-																});
-													}
-												})
-
+												
 									$scope.uiConfig = {
 
 										calendar : {
 
 											height : 500,
 											weekNumbers : true,
+											stick : true,
 											header : {
 
 												left : 'month basicWeek basicQuarter',
@@ -59,14 +100,17 @@ angular
 												}
 											},
 											dayClick : $scope.alertEventOnClick,
-											eventDrop : $scope.alertOnDrop,
-											eventResize : $scope.alertOnResize,
-
+											eventRender: function(event, element) { 
+											    element.find('.fc-time').hide();
+											}
+											
 										}
 									};
-									$scope.eventSources = [$scope.events];
 									
-
+									
+								
+							   
+									
 								} ]
 					}
 

@@ -43,7 +43,7 @@ public class SQLUpdateBuilder<T extends BaseDTO> {
 				{
 					params[i] = field.getInt(model);
 				}
-				else if(fieldType == "java.time.LocalDateTime")
+				else if(fieldType == "java.time.LocalDateTime" && fieldType != null)
 				{
 					params[i] = field.get(model).toString();
 				}
