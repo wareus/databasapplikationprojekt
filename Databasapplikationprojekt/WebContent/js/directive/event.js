@@ -8,7 +8,7 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 
 		templateUrl : 'html/directive/event.html',
 
-		controller : [ '$scope', function($scope) {
+		controller : [ '$scope', function($scope,calendar) {
 			$scope.eventClick = function()
 			{
 				
@@ -31,9 +31,17 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 						}
 				
 				};
-		
-				new Event(event).$save();
 				
+				Event.addForYou(new Event(event));
+			
+			
+				
+					
+				var eventSaved = $scope.$parent.$parent.cancel;
+					
+				if(eventSaved !== undefined)
+					eventSaved();
+					
 				
 			}
 		} ]

@@ -43,9 +43,13 @@ public class SQLUpdateBuilder<T extends BaseDTO> {
 				{
 					params[i] = field.getInt(model);
 				}
-				
-				
+				else if(fieldType == "java.time.LocalDateTime" && fieldType != null)
+				{
+					params[i] = field.get(model).toString();
+				}
+
 				coloumList[i] = fieldName;
+				
 				
 			} catch (IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();

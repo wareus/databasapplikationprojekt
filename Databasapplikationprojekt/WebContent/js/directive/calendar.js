@@ -1,83 +1,116 @@
-angular.module('calendarDirective', [ 'ui.calendar' ]).directive('calendar',function() {
-	return {
-			restrict : 'E',
-			templateUrl : 'html/directive/calendar.html',
+angular
+		.module('calendarDirective', [ 'ui.calendar', 'dto' ])
+		.directive(
+				'calendar',
+				function(Event) {
+					return {
+						restrict : 'E',
+						templateUrl : 'html/directive/calendar.html',
 
-			controller : ['$scope',
-					function($scope) {
-								$scope.eventSources = [{
-									events: [	{		
-									         title: 'Doktorsavhandling',
-									         url: 'http://google.com/',
-									         start: '2015-11-28'
-										},	{
-											title: 'Long Event',
-											start: '2015-11-07',
-											end: '2015-11-10',
-											color: 'yellow',   // an option!
-								            textColor: 'black'
-										},
-										{
-											title: 'All Day Event',
-											start: '2015-11-01'
-										}]	
-								}];
-								
-								
-								
-								$scope.uiConfig = {
+						controller : [
+								'$scope',
+								function($scope, uiCalendarConfig) {
+										$scope.events = [];
+										$scope.eventSources = [];
 										
-									calendar : {
-										
-										height : 500,
-//										editable : true,
-										weekNumbers: true,
-										header : {
+										$scope.test = function() {
+											Event
+											.forYou(function(data) {
+												$scope.calendar.fullCalendar('removeEventSource', $scope.events);
+												$scope.events = [];
+												
+												for (i = 0; i < data.length; i++) {
+													
+													$scope.events
+															.push({
+																title : data[i].title,
+																start : new Date(
+																		data[i].startDate.date.year,
+																		data[i].startDate.date.month - 1,
+																		data[i].startDate.date.day),
+																end : new Date(
+																		data[i].endDate.date.year,
+																		data[i].endDate.date.month - 1,
+																		data[i].endDate.date.day),
+																color: 'yellow',   // an option!
+																textColor: 'black',
+																stick : true,
+																allDay: false
+															});
+													
+												}
+												$scope.calendar.fullCalendar('addEventSource', $scope.events);
+												
+												
+											});
 											
-											left : 'month basicWeek basicQuarter',
-											center : 'title',
-											right : 'today prev,next'
-										},
-										selectable: true,
-//										selectHelper: true,
-//										select: function(start, end) {
-//											var title = prompt('Event Title:');
-//											var eventData;
-//											if (title) {
-//												eventData = {
-//													title: title,
-//													start: start,
-//													end: end,
-//												}
-//												$scope.eventSources = [{
-//													events: [	{		
-//												         title: 'Hejsan',												        
-//												         start: '2015-11-16',
-//												         end: '2015-11-22'
-//													}]
-//												}];
-//												
-//											}
-//											console.log(eventData);
-//											
-//										},
-										
-										views : {												
-											basicQuarter : {
-											type : 'basic',
-											duration : {
-											months : 3
-											},
-											buttonText : 'quarter'
+										};
+										Event
+										.forYou(function(data) {
+											
+											if(data.length !== null) {
+											for (i = 0; i < data.length; i++) {
+												
+												$scope.events
+														.push({
+															title : data[i].title,
+															start : new Date(
+																	data[i].startDate.date.year,
+																	data[i].startDate.date.month - 1,
+																	data[i].startDate.date.day),
+															end : new Date(
+																	data[i].endDate.date.year,
+																	data[i].endDate.date.month - 1,
+																	data[i].endDate.date.day),
+															color: 'yellow',   // an option!
+															textColor: 'black',
+															stick : true
+														});
 											}
+											$scope.calendar.fullCalendar('addEventSource', $scope.events);
+											}
+										});
+									
+									
+											
+										
+
+												
+									$scope.uiConfig = {
+
+										calendar : {
+
+											height : 500,
+											weekNumbers : true,
+											stick : true,
+											header : {
+
+												left : 'month basicWeek basicQuarter',
+												center : 'title',
+												right : 'today prev,next'
+											},
+
+											views : {
+												basicQuarter : {
+													type : 'basic',
+													duration : {
+														months : 3
+													},
+													buttonText : 'quarter'
+												}
 											},
 											dayClick : $scope.alertEventOnClick,
-											eventDrop : $scope.alertOnDrop,
-											eventResize : $scope.alertOnResize,
+//											eventRender: function(event, element) { 
+//											    element.find('.fc-time').hide();
+//											}
 											
 										}
 									};
-
+									
+									
+								
+							   
+									
 								} ]
 					}
 

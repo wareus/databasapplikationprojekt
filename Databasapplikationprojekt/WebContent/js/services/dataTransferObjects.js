@@ -42,5 +42,18 @@ angular.module('dto', ['api'])
 }) 
 .service('Event', function(API) {
 	
-	return API('api/event');
+var api = API('api/event');
+	
+	api.forYou = function(callback)
+	{
+		API('api/event/forYou').query(callback);
+	}
+	api.addForYou = function(callback)
+	{
+		API('api/event/addForYou').save(callback);
+	}
+	
+	
+	return api;
+	
 });
