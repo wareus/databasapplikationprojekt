@@ -45,7 +45,8 @@ public class SQLUpdateBuilder<T extends BaseDTO> {
 				}
 				else if(fieldType == "java.time.LocalDateTime" && fieldType != null)
 				{
-					params[i] = field.get(model).toString();
+					if(field.get(model) != null)
+						params[i] = field.get(model).toString();
 				}
 				coloumList[i] = fieldName;
 				
