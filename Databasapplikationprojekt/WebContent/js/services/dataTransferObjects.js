@@ -31,10 +31,10 @@ angular.module('dto', ['api'])
 	
 	var api = API('api/userWorksOn');
 	
-	api.connectProjectToMe = function(projectID)
+	api.connectProjectToMe = function(projectID, callback)
 	{
 		UserWorksOn = API('api/userWorksOn/connectProjectToMe');
-		new UserWorksOn({projectID:projectID}).$save();
+		new UserWorksOn({projectID:projectID}).$save(callback);
 	}
 	
 	return api;

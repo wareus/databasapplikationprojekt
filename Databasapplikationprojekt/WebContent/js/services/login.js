@@ -5,7 +5,11 @@ angular.module('login', ['ngResource'])
 	
 		api.logout = function()
 		{
-			$resource("api/login/logout").query();
+			$resource("api/login/logout").query(function()
+			{
+				if(update != null)
+					update();
+			});
 		}
 		
 		return api;

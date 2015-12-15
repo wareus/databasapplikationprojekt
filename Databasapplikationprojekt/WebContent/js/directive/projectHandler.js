@@ -10,15 +10,21 @@ angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', f
 				create : function()
 				{
 					new Project({name:$scope.projectHandler.projectName}).$save(function(data){
-						UserWorksOn.connectProjectToMe(data.id);
-						$scope.update();
+						UserWorksOn.connectProjectToMe(data.id, function()
+						{
+							update();
+							
+						});
 						console.log($scope);
 					});
 				},
 				join:function(data)
 				{
-					UserWorksOn.connectProjectToMe(data.id);
-					$scope.update();
+					UserWorksOn.connectProjectToMe(data.id, function()
+					{
+						update();
+						
+					});
 				}
 			}
 			

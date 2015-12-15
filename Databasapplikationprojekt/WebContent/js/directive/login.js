@@ -18,6 +18,8 @@ angular.module('loginDirective', [ 'login' ]).directive('login', function(Login)
 					
 					if(loginSucceeded !== undefined)
 						loginSucceeded();
+					if(update != null)
+						update();
 					
 				}).$promise.catch(function(response) {
 					

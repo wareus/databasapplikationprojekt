@@ -14,8 +14,11 @@ angular.module('projectListDirective', ['dto']).directive('projectList', functio
 					},
 					delete:function(id)
 					{
-						new Project({id:id}).$remove();
-						$scope.projectList.update();
+						new Project({id:id}).$remove(function()
+						{
+							$scope.projectList.update();
+							
+						});
 					},
 					update:function()
 					{
