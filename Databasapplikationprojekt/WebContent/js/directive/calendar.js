@@ -130,9 +130,9 @@ angular
 												}
 											},
 											dayClick : $scope.alertEventOnClick,
-//											eventRender: function(event, element) { 
-//											    element.find('.fc-time').hide();
-//											}
+											eventRender: function(event, element) { 
+											    element.find('.fc-time').hide();
+											}
 											
 										}
 									};
