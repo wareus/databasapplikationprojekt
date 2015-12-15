@@ -33,7 +33,7 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 				};
 				
 				Event.addForYou(new Event(event));
-			
+				console.log($scope.calendar);
 			
 				
 					
