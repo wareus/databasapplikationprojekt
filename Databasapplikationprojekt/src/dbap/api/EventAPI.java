@@ -1,5 +1,6 @@
 package dbap.api;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -69,8 +70,13 @@ public class EventAPI  extends BaseAPI<Event>{
 		
 		int id = (int) request.getSession().getAttribute("id");
 		int projectId = (int) request.getSession().getAttribute("projectID");
-		LocalDateTime ldt = LocalDateTime.of(event.endDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));
+		
+		LocalDateTime ldt = null;
 		LocalDateTime sldt = LocalDateTime.of(event.startDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));
+		if(!event.endDate.toLocalDate().toString().equals("0000-00-00")) {
+			ldt = LocalDateTime.of(event.endDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));
+		}
+		
 		
 		event.startDate = sldt;
 		event.endDate = ldt;
