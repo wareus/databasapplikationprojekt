@@ -6,7 +6,10 @@
 		<label>Project name
 		        <input ng-model="projectHandler.projectName" type="text" placeholder="name" />
 		</label>
-		<button class="expand" ng-click="projectHandler.create()">Create</button>
+		<label>Category
+		        <select ng-options="category for category in categories" ng-model="category"></select>
+		</label>
+		<button class="expand" ng-click="projectHandler.create(category)">Create</button>
 	</accordion-group>
 	<accordion-group is-open="isopenJoin">
 	        <accordion-heading>

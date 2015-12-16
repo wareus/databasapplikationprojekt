@@ -6,16 +6,19 @@ angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', f
 		templateUrl : 'html/directive/projectHandler.html',
 
 		controller : [ '$scope', function($scope) {
+			
+			$scope.categories = CATEGORIES;
+			$scope.category = $scope.categories[0];
+			
 			$scope.projectHandler = {
-				create : function()
+				create : function(category)
 				{
-					new Project({name:$scope.projectHandler.projectName}).$save(function(data){
+					new Project({name:$scope.projectHandler.projectName, kategori:category}).$save(function(data){
 						UserWorksOn.connectProjectToMe(data.id, function()
 						{
 							update();
 							
 						});
-						console.log($scope);
 					});
 				},
 				join:function(data)
