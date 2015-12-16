@@ -4,7 +4,7 @@ angular.module('projectView', ['dto','login'])
 	update = function()
 	{
 		$scope.projectList.update();
-		console.log("sune");
+		
 	}
 	
 });

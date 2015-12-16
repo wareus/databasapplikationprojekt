@@ -13,7 +13,9 @@ angular
 										$scope.events = [];
 										$scope.eventSources = [];
 										
-										update = function() {
+										
+										
+										$scope.update = function() {
 											
 											Event
 											.forYou(function(data) {

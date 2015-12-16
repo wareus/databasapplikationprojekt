@@ -24,7 +24,7 @@ angular.module('projectListDirective', ['dto']).directive('projectList', functio
 					{
 						Project.yourProjects(function(data) {
 							$scope.projectList.data = data;
-							console.log("update");
+							
 						});
 					}
 			};
