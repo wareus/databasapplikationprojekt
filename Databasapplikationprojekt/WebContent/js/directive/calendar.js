@@ -16,7 +16,6 @@ angular
 										
 										
 										$scope.update = function() {
-											console.log("update");
 											Event
 											.forYou(function(data) {
 												$scope.calendar.fullCalendar('removeEventSource', $scope.events);
@@ -27,6 +26,7 @@ angular
 													if(data[i].startDate != null && data[i].endDate != null) {
 														$scope.events
 																.push({
+																	id: data[i].id,
 																	title : data[i].title,
 																	start : new Date(
 																			data[i].startDate.date.year,
@@ -43,6 +43,7 @@ angular
 														} else if(data[i].startDate != null && data[i].endDate == null) {
 															$scope.events
 															.push({
+																id: data[i].id,
 																title : data[i].title,
 																start : new Date(
 																		data[i].startDate.date.year,
@@ -64,13 +65,16 @@ angular
 										};
 									$scope.update();
 											
-										
+									$scope.remove = function() {
+										console.log("Jens");
+									}	
 
 												
 									$scope.uiConfig = {
 
 										calendar : {
-
+											
+											editable: true,
 											height : 500,
 											weekNumbers : true,
 											stick : true,
@@ -90,15 +94,33 @@ angular
 													buttonText : 'quarter'
 												}
 											},
-											dayClick : $scope.alertEventOnClick,
+											eventClick : $scope.alertEventOnClick,
+											eventDrop : $scope.alertOnDrop,
 											eventRender: function(event, element) { 
 											    element.find('.fc-time').hide();
+											},
+											eventDrop: function(event) {
+												//ta sedan bort ifrån databasen
+												console.log(event.start._d),
+												console.log(event.end._d)
+												Event.updateEvent(function(data) {
+													
+													
+												});
+											},
+											eventClick: function(event) {
+												
+												
+												
+												$scope.calendar.fullCalendar('removeEvents' ,[ event.id]);
+												Event.removeEvent(function(data) {
+													
+												});
 											}
 											
 										}
 									};
-									
-									
+								
 								
 							   
 									
