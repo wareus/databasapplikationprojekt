@@ -48,9 +48,10 @@ var api = API('api/event');
 	{
 		API('api/event/forYou').query(callback);
 	}
-	api.addForYou = function(callback)
+	api.addForYou = function(event, callback)
 	{
-		API('api/event/addForYou').save(callback);
+		var api = API('api/event/addForYou');
+		new api(event).$save(callback);
 	}
 	
 	

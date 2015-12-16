@@ -3,10 +3,8 @@ angular.module('calendarView', ['dto'])
 	
 	update = function()
 	{
-		
-		console.log("hehj");
-		console.log($scope);
-		$scope.calendar.update();
+
+		$scope.update();
 		
 	}
 });

@@ -16,7 +16,7 @@ angular
 										
 										
 										$scope.update = function() {
-											
+											console.log("update");
 											Event
 											.forYou(function(data) {
 												$scope.calendar.fullCalendar('removeEventSource', $scope.events);

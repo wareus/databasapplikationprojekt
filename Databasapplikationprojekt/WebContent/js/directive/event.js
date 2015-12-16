@@ -32,8 +32,11 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 				
 				};
 				
-				Event.addForYou(new Event(event));
-				console.log($scope.calendar);
+				Event.addForYou(new Event(event), function()
+				{
+						console.log("$scope.calendar");
+					update();
+				});
 			
 				
 					
