@@ -62,48 +62,7 @@ angular
 											});
 											
 										};
-										Event
-										.forYou(function(data) {
-											
-											
-											for (i = 0; i < data.length; i++) {
-										
-												if(data[i].startDate != null && data[i].endDate != null) {
-												$scope.events
-														.push({
-															title : data[i].title,
-															start : new Date(
-																	data[i].startDate.date.year,
-																	data[i].startDate.date.month - 1,
-																	data[i].startDate.date.day),
-															end : new Date(
-																	data[i].endDate.date.year,
-																	data[i].endDate.date.month - 1,
-																	data[i].endDate.date.day),
-															color: 'yellow',   // an option!
-															textColor: 'black',
-															stick : true
-														});
-												} else if(data[i].startDate != null && data[i].endDate == null) {
-													$scope.events
-													.push({
-														title : data[i].title,
-														start : new Date(
-																data[i].startDate.date.year,
-																data[i].startDate.date.month - 1,
-																data[i].startDate.date.day),
-														color: 'yellow',   // an option!
-														textColor: 'black',
-														stick : true
-													});
-													
-												}
-											
-											}
-											$scope.calendar.fullCalendar('addEventSource', $scope.events);
-										});
-									
-									
+									$scope.update();
 											
 										
 

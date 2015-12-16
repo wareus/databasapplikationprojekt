@@ -9,5 +9,4 @@ angular.module('calendarView', ['dto'])
 		$scope.calendar.update();
 		
 	}
-	update();
 });
