@@ -8,7 +8,7 @@
   	<button class="tiny" ng-click="projectList.select(project.id)">Select</button>
   	<button class="alert tiny" ng-click="projectList.delete(project.id)">Delete</button>
   	<div class="left" style="margin-right:10px">
-	  	<select ng-change="projectList.selectCategory(project.id,category)" ng-options="category for category in categories" ng-model="category"></select>
+	  	<select ng-init="category=project.kategori" ng-change="projectList.selectCategory(project,category)" ng-options="category for category in categories" ng-model="category"></select>
   	</div>
   </div>
 </div>

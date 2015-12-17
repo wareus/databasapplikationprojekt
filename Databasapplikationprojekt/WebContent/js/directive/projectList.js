@@ -8,9 +8,10 @@ angular.module('projectListDirective', ['dto']).directive('projectList', functio
 		controller : [ '$scope', function($scope) {
 			$scope.categories = CATEGORIES;
 			$scope.projectList = {
-				selectCategory:function(id,category)
+				selectCategory:function(project, newCategory)
 				{
-					new Project({id:id,kategori:category}).$update();
+					project.kategori = newCategory;
+					new Project(project).$update();
 				},
 				select:function(id)
 				{
