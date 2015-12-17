@@ -2,9 +2,8 @@
 <div class="panel" ng-repeat="project in projectList.data track by project.id">
   {{project.name}}
   <div class="right">
-  <!-- 
-  	Category: {{project.kategori}}
-   -->
+ 
+
   	
   	<button class="tiny" ng-click="projectList.select(project.id)">Select</button>
   	<button class="alert tiny" ng-click="projectList.delete(project.id)">Delete</button>
