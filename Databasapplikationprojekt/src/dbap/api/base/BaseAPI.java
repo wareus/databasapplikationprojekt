@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import dbap.custom.annotation.Login;
 import dbap.dao.base.BaseDAO;
 import dbap.dao.dto.base.BaseDTO;
 
@@ -35,6 +36,7 @@ public class BaseAPI <T extends BaseDTO>{
 	}
 
     @GET
+    @Login
     public Response getAll() {
     	
     	ArrayList<T> users = dao.getAll();
@@ -45,6 +47,7 @@ public class BaseAPI <T extends BaseDTO>{
     }
     @GET
     @Path("{id}")
+    @Login
     public Response getByID(@PathParam("id") String id) {
     	
     	T model = dao.getByID(Integer.parseInt(id));
@@ -54,6 +57,7 @@ public class BaseAPI <T extends BaseDTO>{
     	
     }
     @POST
+    @Login
     public Response create(String json) {
 
     	System.out.println(json);
@@ -67,6 +71,7 @@ public class BaseAPI <T extends BaseDTO>{
     }
     @PUT
     @Path("{id}")
+    @Login
     public Response update(String json) {
     	
     	T model = new Gson().fromJson(json, dao.getType());
@@ -79,6 +84,7 @@ public class BaseAPI <T extends BaseDTO>{
 
     @DELETE
     @Path("{id}")
+    @Login
     public Response delete(@PathParam("id") int id) {
     	
     	dao.delete(id);

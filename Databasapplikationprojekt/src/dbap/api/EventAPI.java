@@ -30,14 +30,7 @@ public class EventAPI  extends BaseAPI<Event>{
 	@PostConstruct
 	public void init() {
 		dao = new EventDAO();
-	}
-	@Override
-	@Login
-	public Response getAll()
-	{
-		return super.getAll();
-	}
-	
+	}	
 	
 	@Login
 	@Path("forUser/{id}")
