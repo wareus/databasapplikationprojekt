@@ -10,7 +10,7 @@ angular.module('projectListDirective', ['dto']).directive('projectList', functio
 			$scope.projectList = {
 				selectCategory:function(id,category)
 				{
-					new Project({id:id,kategori:category}).$save();
+					new Project({id:id,kategori:category}).$update();
 				},
 				select:function(id)
 				{
