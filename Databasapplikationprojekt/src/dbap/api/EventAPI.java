@@ -22,6 +22,7 @@ import dbap.dao.EventDAO;
 import dbap.dao.UserWorksOnDAO;
 import dbap.dao.dto.Event;
 import dbap.dao.dto.UserWorksOn;
+import dbap.exceptions.NoProjectSelectedException;
 
 
 @Path("event")
@@ -62,7 +63,10 @@ public class EventAPI  extends BaseAPI<Event>{
 		Event event = new Gson().fromJson(json, Event.class);
 		
 		int id = (int) request.getSession().getAttribute("id");
+		
+		if(request.getSession().getAttribute("projectID") == null) throw new NoProjectSelectedException();
 		int projectId = (int) request.getSession().getAttribute("projectID");
+		
 		
 		LocalDateTime ldt = null;
 		LocalDateTime sldt = LocalDateTime.of(event.startDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));

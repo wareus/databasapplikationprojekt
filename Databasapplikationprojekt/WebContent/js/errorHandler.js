@@ -2,7 +2,7 @@ angular.module('errorHandler', ['mm.foundation']).config(['$httpProvider', funct
 
 	var loginModalOpen = false;
 	
-	$httpProvider.interceptors.push(function($q, $injector) {
+	$httpProvider.interceptors.push(function($q, $injector, $location) {
 
 			
 		
@@ -27,6 +27,10 @@ angular.module('errorHandler', ['mm.foundation']).config(['$httpProvider', funct
 						        }
 						    });
 			        	}
+			        }
+			        else if(response.status === 406)
+			        {
+			        	$location.path("projectView");
 			        }
 			        
 			        if(response.data.header !== undefined && response.data.message !== undefined)

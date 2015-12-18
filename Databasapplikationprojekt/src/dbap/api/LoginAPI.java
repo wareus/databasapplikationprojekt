@@ -3,6 +3,8 @@ package dbap.api;
 
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
@@ -18,9 +20,12 @@ import com.google.gson.Gson;
 
 import dbap.custom.annotation.Login;
 import dbap.dao.UserDAO;
+import dbap.dao.UserWorksOnDAO;
 import dbap.dao.dto.User;
+import dbap.dao.dto.UserWorksOn;
 import dbap.exceptions.AlertException;
 import dbap.exceptions.BadRequestException;
+import dbap.exceptions.NoProjectSelectedException;
 import dbap.exceptions.NotLoggedInException;
 
 @Path("login")
@@ -50,7 +55,14 @@ public class LoginAPI
 			session.setAttribute("id", dbUser.id);
 			session.setAttribute("userName", dbUser.name);
 			session.setAttribute("rights", dbUser.rights);
+			
+			ArrayList<UserWorksOn> worksOnList = new UserWorksOnDAO().getByUserID(dbUser.id);
 
+			if(worksOnList.size() == 0) throw new NoProjectSelectedException();
+			session.setAttribute("projectID", worksOnList.get(0).id);
+			
+			
+			
 			return Response.status(Response.Status.ACCEPTED).build();
 		}
 		
