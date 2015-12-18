@@ -53,15 +53,16 @@ var api = API('api/event');
 		var api = API('api/event/addForYou');
 		new api(event).$save(callback);
 	}
-	api.updateEvent = function(callback)
+	api.updateEvent = function(event,callback)
 	{
+		
 		var api = API('api/event/updateEvent');
 		new api(event).$save(callback); 
+		
 	}
-	api.removeEvent = function(callback)
+	api.removeEvent = function(id)
 	{
-		var api = API('api/event/removeEvent');
-		new api(event).$save(callback); 
+		API('api/event/removeEvent/' +id).remove();
 	}
 	
 	

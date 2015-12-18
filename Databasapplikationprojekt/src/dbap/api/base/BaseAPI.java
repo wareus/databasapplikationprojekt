@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import dbap.custom.annotation.Login;
 import dbap.dao.base.BaseDAO;
 import dbap.dao.dto.base.BaseDTO;
 
@@ -67,7 +68,8 @@ public class BaseAPI <T extends BaseDTO>{
     }
     @PUT
     @Path("{id}")
-    public Response update(String json) {
+    @Login
+    public Response update(String json,@PathParam("id") int id) {
     	
     	T model = new Gson().fromJson(json, dao.getType());
     	

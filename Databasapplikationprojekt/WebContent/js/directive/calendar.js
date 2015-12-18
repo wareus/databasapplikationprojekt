@@ -2,7 +2,7 @@ angular
 		.module('calendarDirective', [ 'ui.calendar', 'dto' ])
 		.directive(
 				'calendar',
-				function(Event) {
+				function(Event,$filter) {
 					return {
 						restrict : 'E',
 						templateUrl : 'html/directive/calendar.html',
@@ -100,20 +100,55 @@ angular
 											    element.find('.fc-time').hide();
 											},
 											eventDrop: function(event) {
-												//ta sedan bort ifrån databasen
-												console.log(event.start._d),
-												console.log(event.end._d)
-												Event.updateEvent(function(data) {
+												
+												if(event.end != null && event.start != null)
+													{
+													var start = {
+															date:{
+																year:$filter('date')(event.start._d,'yyyy'),
+																month:$filter('date')(event.start._d,'M'),
+																day:$filter('date')(event.start._d,'d')
+															}
+				
+													};
+													var end = {
+															date:{
+																year:$filter('date')(event.end._d,'yyyy'),
+																month:$filter('date')(event.end._d,'M'),
+																day:$filter('date')(event.end._d,'d')
+															}
+				
+														}
+													} 
+												else  {
+													var start = {
+															date:{
+																year:$filter('date')(event.start._d,'yyyy'),
+																month:$filter('date')(event.start._d,'M'),
+																day:$filter('date')(event.start._d,'d')
+															}
+						
+														}
+													var end = null;
+													}
+												
+												var newEvent = {id:event.id, title:event.title,startDate:start, endDate:end};
+												
+												Event.updateEvent(new Event(newEvent), function()
+												{
 													
+													update();
 													
 												});
 											},
 											eventClick: function(event) {
 												
+												var id = event.id;
 												
-												
-												$scope.calendar.fullCalendar('removeEvents' ,[ event.id]);
-												Event.removeEvent(function(data) {
+												$scope.calendar.fullCalendar('removeEvents' ,[ id]);
+												Event.removeEvent(id, function()
+												{
+													update();
 													
 												});
 											}

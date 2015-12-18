@@ -15,7 +15,7 @@ angular.module('projectHandlerDirective', ['dto']).directive('projectHandler', f
 							update();
 							
 						});
-						console.log($scope);
+						
 					});
 				},
 				join:function(data)

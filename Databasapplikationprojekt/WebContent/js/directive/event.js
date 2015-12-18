@@ -12,7 +12,7 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 			$scope.eventClick = function()
 			{
 				
-				
+			
 				
 				var event = $scope.event;
 				event.startDate = {
@@ -31,10 +31,9 @@ angular.module('eventDirective', [ 'dto' ]).directive('event', function(Event,$f
 						}
 				
 				};
-				
+			
 				Event.addForYou(new Event(event), function()
 				{
-						console.log("$scope.calendar");
 					update();
 				});
 			

@@ -7,7 +7,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
@@ -81,6 +83,37 @@ public class EventAPI  extends BaseAPI<Event>{
 		event.startDate = sldt;
 		event.endDate = ldt;
 		event.userID = id;
+		event.projectID = projectId;
+		((EventDAO)dao).add(event);
+		
+		return Response.status(Status.ACCEPTED).build();
+	}
+	@Login
+	@Path("removeEvent/{id}")
+	@DELETE
+	public Response removeEvent(@PathParam("id") int id)
+	{
+		
+		((EventDAO)dao).delete(id);
+		return Response.status(Status.ACCEPTED).build();
+	}
+	@Login
+	@Path("updateEvent/{id}")
+	@POST
+	public Response update(String json,@PathParam("id") int id)
+	{
+		int userID = (int) request.getSession().getAttribute("id");
+		int projectId = (int) request.getSession().getAttribute("projectID");
+		
+		Event event = new Gson().fromJson(json, Event.class);
+		LocalDateTime ldt = null;
+		LocalDateTime sldt = LocalDateTime.of(event.startDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));
+		if(event.endDate != null && !event.endDate.toLocalDate().toString().equals("0000-00-00")) {
+			ldt = LocalDateTime.of(event.endDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));
+		}
+		event.startDate = sldt;
+		event.endDate = ldt;
+		event.userID = userID;
 		event.projectID = projectId;
 		((EventDAO)dao).add(event);
 		

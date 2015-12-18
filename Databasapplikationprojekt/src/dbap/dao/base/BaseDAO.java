@@ -18,7 +18,7 @@ import dbap.dao.utilities.mapping.RowMapper;
 @SuppressWarnings("unchecked")
 public class BaseDAO <T extends BaseDTO>{
 	protected DataBaseHandler db;
-	private Class <T> type;
+	protected Class <T> type;
 	private String tabelName;
 	private RowMapper<T> mapper;
 	
