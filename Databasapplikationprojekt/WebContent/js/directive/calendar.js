@@ -1,5 +1,5 @@
 angular
-		.module('calendarDirective', [ 'ui.calendar', 'dto' ])
+		.module('calendarDirective', [ 'ui.calendar', 'dto'])
 		.directive(
 				'calendar',
 				function(Event,$filter) {
@@ -143,14 +143,19 @@ angular
 											},
 											eventClick: function(event) {
 												
-												var id = event.id;
-												
-												$scope.calendar.fullCalendar('removeEvents' ,[ id]);
-												Event.removeEvent(id, function()
-												{
-													update();
+												if (confirm('Are you sure you want to delete this event from the calendar?')) {
+													var id = event.id;
 													
-												});
+													$scope.calendar.fullCalendar('removeEvents' ,[ id]);
+													Event.removeEvent(id, function()
+													{
+														update();
+														
+													});
+												} else {
+												   return;
+												}
+												
 											}
 											
 										}
