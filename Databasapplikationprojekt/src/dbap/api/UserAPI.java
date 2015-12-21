@@ -17,16 +17,6 @@ public class UserAPI extends BaseAPI<User>
 		
 		dao = new UserDAO();
 	}
-
-	@Override
-	@Login
-	public Response getAll()
-	{
-		return super.getAll();
-	}
-
-	
-	
 	
 	
 }

@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import dbap.dao.base.BaseDAO;
 import dbap.dao.dto.Project;
 
-import dbap.dao.utilities.mapping.RowMapper;
-import java.sql.ResultSet;
-
 
 public class ProjectDAO extends BaseDAO<Project> {
 	
@@ -33,6 +30,18 @@ public class ProjectDAO extends BaseDAO<Project> {
 		
 		return (ArrayList<Project>)db.query(sql,params, getMapper());
 	}
+
+	@Override
+	public void delete(int id) {
+		
+		Object [] params = {id};
+		
+		db.update("DELETE FROM userworkson WHERE projectID=?" , params);
+		
+		super.delete(id);
+	}
+	
+	
 
 
 	}

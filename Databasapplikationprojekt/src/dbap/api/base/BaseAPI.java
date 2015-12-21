@@ -36,6 +36,7 @@ public class BaseAPI <T extends BaseDTO>{
 	}
 
     @GET
+    @Login
     public Response getAll() {
     	
     	ArrayList<T> users = dao.getAll();
@@ -46,6 +47,7 @@ public class BaseAPI <T extends BaseDTO>{
     }
     @GET
     @Path("{id}")
+    @Login
     public Response getByID(@PathParam("id") String id) {
     	
     	T model = dao.getByID(Integer.parseInt(id));
@@ -55,6 +57,7 @@ public class BaseAPI <T extends BaseDTO>{
     	
     }
     @POST
+    @Login
     public Response create(String json) {
 
     	System.out.println(json);
@@ -70,6 +73,7 @@ public class BaseAPI <T extends BaseDTO>{
     @Path("{id}")
     @Login
     public Response update(String json,@PathParam("id") int id) {
+
     	
     	T model = new Gson().fromJson(json, dao.getType());
     	
@@ -81,6 +85,7 @@ public class BaseAPI <T extends BaseDTO>{
 
     @DELETE
     @Path("{id}")
+    @Login
     public Response delete(@PathParam("id") int id) {
     	
     	dao.delete(id);
