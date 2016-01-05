@@ -1,16 +1,13 @@
 
 package dbap.api;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
@@ -22,9 +19,7 @@ import com.google.gson.Gson;
 import dbap.api.base.BaseAPI;
 import dbap.custom.annotation.Login;
 import dbap.dao.EventDAO;
-import dbap.dao.UserWorksOnDAO;
 import dbap.dao.dto.Event;
-import dbap.dao.dto.UserWorksOn;
 
 
 @Path("event")
@@ -61,6 +56,15 @@ public class EventAPI  extends BaseAPI<Event>{
 		int id = (int) request.getSession().getAttribute("id");
 		
 		ArrayList<Event> events = ((EventDAO)dao).getAllForUser(id);
+		
+		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(events)).build();
+	}
+	@Login
+	@Path("forCategory/{category}")
+	@GET
+	public Response getForCategory(@PathParam("category") String category)
+	{
+		ArrayList<Event> events = ((EventDAO)dao).getAllFromCategory(category);
 		
 		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(events)).build();
 	}

@@ -48,6 +48,10 @@ var api = API('api/event');
 	{
 		API('api/event/forYou').query(callback);
 	}
+	api.forCategory = function(category,callback)
+	{
+		API('api/event/forCategory/' +category).query(callback);
+	}
 	api.addForYou = function(event, callback)
 	{
 		var api = API('api/event/addForYou');

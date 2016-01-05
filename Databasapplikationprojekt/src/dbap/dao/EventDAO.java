@@ -30,6 +30,14 @@ public class EventDAO extends BaseDAO<Event> {
 		return (ArrayList<Event>) db.query(sql, params, getMapper());
 
 	}
+	@SuppressWarnings("unchecked")
+	public ArrayList<Event> getAllFromCategory(String category) {
+		Object[] params = { category };
+		String sql = "SELECT event.* FROM event JOIN project ON event.ProjectID = project.id WHERE kategori=?";
+
+		return (ArrayList<Event>) db.query(sql, params, getMapper());
+
+	}
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<Event> getAllFromUser(int id) {
