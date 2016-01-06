@@ -65,8 +65,10 @@ public class EventAPI  extends BaseAPI<Event>{
 		int id = (int) request.getSession().getAttribute("id");
 		
 		if(request.getSession().getAttribute("projectID") == null) throw new NoProjectSelectedException();
-		int projectId = (int) request.getSession().getAttribute("projectID");
 		
+		Integer projectId = (Integer) request.getSession().getAttribute("projectID");
+		
+		if(projectId == null) throw new NoProjectSelectedException();
 		
 		LocalDateTime ldt = null;
 		LocalDateTime sldt = LocalDateTime.of(event.startDate.toLocalDate(), LocalTime.of(0, 0, 0 ,0));
