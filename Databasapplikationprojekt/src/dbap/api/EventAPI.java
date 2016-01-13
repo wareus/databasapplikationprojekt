@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 package dbap.api;
 
 import java.time.LocalDateTime;
@@ -59,6 +60,41 @@ public class EventAPI  extends BaseAPI<Event>{
 		
 		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(events)).build();
 	}
+=======
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import javax.annotation.PostConstruct;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.GET;
+import javax.ws.rs.core.Response.Status;
+
+import com.google.gson.Gson;
+
+import dbap.api.base.BaseAPI;
+import dbap.custom.annotation.Login;
+import dbap.dao.EventDAO;
+import dbap.dao.UserWorksOnDAO;
+import dbap.dao.dto.Event;
+import dbap.dao.dto.UserWorksOn;
+import dbap.exceptions.NoProjectSelectedException;
+
+
+@Path("event")
+public class EventAPI  extends BaseAPI<Event>{
+	
+	@PostConstruct
+	public void init() {
+		dao = new EventDAO();
+	}	
+	
+
 	@Login
 	@Path("forCategory/{category}")
 	@GET
@@ -67,6 +103,7 @@ public class EventAPI  extends BaseAPI<Event>{
 		ArrayList<Event> events = ((EventDAO)dao).getAllFromCategory(category);
 		
 		return Response.status(Status.ACCEPTED).entity(new Gson().toJson(events)).build();
+
 	}
 	@Login
 	@Path("addForYou")
@@ -108,7 +145,11 @@ public class EventAPI  extends BaseAPI<Event>{
 	public Response update(String json,@PathParam("id") int id)
 	{
 		int userID = (int) request.getSession().getAttribute("id");
-		int projectId = (int) request.getSession().getAttribute("projectID");
+		if(request.getSession().getAttribute("projectID") == null) throw new NoProjectSelectedException();
+		
+		Integer projectId = (Integer) request.getSession().getAttribute("projectID");
+		
+		if(projectId == null) throw new NoProjectSelectedException();
 		
 		Event event = new Gson().fromJson(json, Event.class);
 		LocalDateTime ldt = null;
