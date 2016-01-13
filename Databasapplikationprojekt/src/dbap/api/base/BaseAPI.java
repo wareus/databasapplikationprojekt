@@ -52,7 +52,6 @@ public class BaseAPI <T extends BaseDTO>{
     	
     	T model = dao.getByID(Integer.parseInt(id));
     	
-    	
     	return Response.status(Status.ACCEPTED).entity(new Gson().toJson(model)).build();
     	
     }
